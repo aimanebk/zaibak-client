@@ -9,13 +9,15 @@ import { LoginComponent } from './login/login.component';
 import { ControlMessagesComponent } from './shared/control-messages/control-messages.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APIInterceptor } from './core/interceptors/APIInterceptor';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ControlMessagesComponent
+    ControlMessagesComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

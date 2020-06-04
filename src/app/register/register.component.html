@@ -1,0 +1,44 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+</div>
+
+<div class="container h-100 login">
+	<div class="d-flex justify-content-center h-100">
+		<div class="user_card">
+			<div class="d-flex justify-content-center">
+				<div class="brand_logo_container">
+					<img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png"
+						class="brand_logo" alt="Logo">
+				</div>
+			</div>
+			<div class="d-flex justify-content-center form_container">
+				<form [formGroup] = "REGISTER_FORM" (submit) ="register()">
+                    <control-messages class="error-messages" [control]="REGISTER_FORM.get('name')"></control-messages>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text"></span>
+						</div>
+						<input type="text" name="" class="form-control input_user" value="" placeholder="Username" formControlName="name">
+                    </div>
+                    <control-messages class="error-messages" [control]="REGISTER_FORM.get('password')"></control-messages>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text"></span>
+						</div>
+						<input type="password" name="" class="form-control input_pass" value="" placeholder="Mot de passe" formControlName="password">
+					</div>
+                    <control-messages class="error-messages" [control]="REGISTER_FORM.get('repeat_password')"></control-messages>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text"></span>
+						</div>
+						<input type="password" name="" class="form-control input_pass" value="" placeholder="Confirmation du mot de passe" formControlName="repeat_password">
+					</div>
+					<div class="d-flex justify-content-center mt-3 login_container">
+						<button type="submit" name="button" class="btn login_btn">S'inscrire</button>
+					</div>
+				</form>
+			</div>
+		</div>
+    </div>
+</div>
