@@ -11,4 +11,8 @@ export class UserService {
   login(payload) {
     return this.http.post('auth', payload );
   }
+  
+  regiser(payload){
+    return this.http.post('user', payload);
+  }
 }
