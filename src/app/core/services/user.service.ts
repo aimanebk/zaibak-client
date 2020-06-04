@@ -6,13 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  constructor(private http :HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  login(payload) {
-    return this.http.post('auth', payload );
-  }
-  
+
   regiser(payload){
     return this.http.post('user', payload);
   }
+
 }

@@ -10,6 +10,8 @@ import { ControlMessagesComponent } from './shared/control-messages/control-mess
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APIInterceptor } from './core/interceptors/APIInterceptor';
 import { RegisterComponent } from './register/register.component';
+import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 
 @NgModule({
@@ -28,11 +30,9 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: APIInterceptor,
-      multi: true,
-    }
+    { provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

@@ -26,10 +26,8 @@ export class RegisterComponent implements OnInit {
     if(this.REGISTER_FORM.dirty && this.REGISTER_FORM.valid) {
       this.userService.regiser(this.REGISTER_FORM.value)
         .subscribe((data : any ) => {
-          console.log(data);
           this.router.navigate(['/']);
         }, error => {
-          console.log(error.error);
           this.error = error.error;
         });
     }

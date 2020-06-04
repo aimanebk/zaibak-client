@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { UserService } from '../core/services/user.service';
+import { AuthenticationService } from '../core/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -17,14 +17,14 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(8)]],
   });
   error ;
-  constructor(private fb: FormBuilder, private router : Router, private userService : UserService) { }
+  constructor(private fb: FormBuilder, private router : Router, private authenticationService : AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
   login(){
     if(this.LOGIN_FORM.dirty && this.LOGIN_FORM.valid) {
-      this.userService.login(this.LOGIN_FORM.value)
+      this.authenticationService.login(this.LOGIN_FORM.value)
         .subscribe((data : any ) => {
           console.log(data);
         }, error => {
