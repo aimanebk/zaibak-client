@@ -12,6 +12,7 @@ import { APIInterceptor } from './core/interceptors/APIInterceptor';
 import { RegisterComponent } from './register/register.component';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { AddProductComponent } from './products/add-product/add-product.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     AppComponent,
     LoginComponent,
     ControlMessagesComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
