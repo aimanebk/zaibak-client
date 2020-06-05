@@ -12,6 +12,10 @@ import { APIInterceptor } from './core/interceptors/APIInterceptor';
 import { RegisterComponent } from './register/register.component';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { AddProductComponent } from './products/add-product/add-product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -19,7 +23,8 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     AppComponent,
     LoginComponent,
     ControlMessagesComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,9 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
