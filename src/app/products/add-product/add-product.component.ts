@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
 import { SellerProduct } from 'src/app/core/models/sellerProduct';
+import { RangeService } from 'src/app/core/services/range.service';
 
 @Component({
   selector: 'app-add-product',
@@ -22,12 +23,15 @@ export class AddProductComponent implements OnInit, OnDestroy {
   
   alive : boolean = true;
   products : SellerProduct[] = [];
+  ranges : Range[] = [];
 
 
-  constructor(private formBuilder : FormBuilder, private productService : ProductService) { }
+  constructor(private formBuilder : FormBuilder, private productService : ProductService,
+              private rangeService : RangeService) { }
 
   ngOnInit(): void {
     this.getProducts();
+    this.getRanges();
   }
 
   getProducts(){
@@ -35,6 +39,16 @@ export class AddProductComponent implements OnInit, OnDestroy {
       .pipe(takeWhile(() => this.alive))
       .subscribe((products : SellerProduct[]) => {
         this.products = products;
+      }, error => {
+        console.log(error);
+      })
+  }
+
+  getRanges(){
+    this.rangeService.getRanges()
+      .pipe(takeWhile(() => this.alive))
+      .subscribe((ranges : Range[]) => {
+        this.ranges = ranges;
       }, error => {
         console.log(error);
       })

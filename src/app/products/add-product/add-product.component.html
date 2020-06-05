@@ -1,86 +1,139 @@
 <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
-    <div class="wrapper wrapper--w790">
-        <div class="card card-5">
-            <div class="card-heading">
-                <h2 class="title">Ajouter un nouveau produit</h2>
+  <div class="wrapper wrapper--w790">
+    <div class="card card-5">
+      <div class="card-heading">
+        <h2 class="title">Ajouter un nouveau produit</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="PRODUCT_FORM" (submit)="submit()">
+          <div class="form-row">
+            <div class="name">Code</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-5"
+                  type="text"
+                  name="code"
+                  formControlName="code"
+                />
+                <control-messages
+                  class="error-messages"
+                  [control]="PRODUCT_FORM.get('code')"
+                ></control-messages>
+              </div>
             </div>
-            <div class="card-body">
-                <form [formGroup] = "PRODUCT_FORM" (submit) ="submit()">
-                    <div class="form-row">
-                        <div class="name">Code</div>
-                        <div class="value">
-                            <div class="input-group">
-                                <input class="input--style-5" type="text" name="code" formControlName="code">
-                                <control-messages class="error-messages" [control]="PRODUCT_FORM.get('code')"></control-messages>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Article</div>
-                        <div class="value">
-                            <div class="input-group">
-                                <input class="input--style-5" type="text" name="article" formControlName="article">
-                                <control-messages class="error-messages" [control]="PRODUCT_FORM.get('article')"></control-messages>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Gamme</div>
-                        <div class="value">
-                            <div class="input-group">
-                                <select class="selectpicker form-control" name ="type" formControlName="type">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
-                                <control-messages class="error-messages" [control]="PRODUCT_FORM.get('type')"></control-messages>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Prix de vente</div>
-                        <div class="value">
-                            <div class="input-group">
-                                <input class="input--style-5" type="number" name="sellingPrice" formControlName="sellingPrice">
-                                <control-messages class="error-messages" [control]="PRODUCT_FORM.get('sellingPrice')"></control-messages>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Remise</div>
-                        <div class="value">
-                            <div class="input-group">
-                                <select class="selectpicker form-control" multiple formControlName="discount">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Equivalent</div>
-                        <div class="value">
-                            <div class="input-group">
-                                <select class="selectpicker form-control" data-live-search="true" multiple formControlName="equivalents">
-                                    <option *ngFor="let product of products" [value]='product.code'>{{ product.article }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Remarque</div>
-                        <div class="value">
-                            <div class="input-group">
-                                <textarea  class="input--style-5" type="text" name="notes" formControlName="notes"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn btn--radius-2 btn--red" type="submit" [disabled]="!PRODUCT_FORM.valid">Ajouter</button>
-                    </div>
-                </form>
+          </div>
+          <div class="form-row">
+            <div class="name">Article</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-5"
+                  type="text"
+                  name="article"
+                  formControlName="article"
+                />
+                <control-messages
+                  class="error-messages"
+                  [control]="PRODUCT_FORM.get('article')"
+                ></control-messages>
+              </div>
             </div>
-        </div>
+          </div>
+          <div class="form-row">
+            <div class="name">Gamme</div>
+            <div class="value">
+              <div class="input-group">
+                <select
+                  class="selectpicker form-control"
+                  name="type"
+                  formControlName="type"
+                >
+                  <option *ngFor="let range of ranges">{{ range.name }}</option>
+                </select>
+                <control-messages
+                  class="error-messages"
+                  [control]="PRODUCT_FORM.get('type')"
+                ></control-messages>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">Prix de vente</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-5"
+                  type="number"
+                  name="sellingPrice"
+                  formControlName="sellingPrice"
+                />
+                <control-messages
+                  class="error-messages"
+                  [control]="PRODUCT_FORM.get('sellingPrice')"
+                ></control-messages>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">Remise</div>
+            <div class="value">
+              <div class="input-group">
+                <select
+                  class="selectpicker form-control"
+                  multiple
+                  formControlName="discount"
+                >
+                  <option>Mustard</option>
+                  <option>Ketchup</option>
+                  <option>Relish</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">Equivalent</div>
+            <div class="value">
+              <div class="input-group">
+                <select
+                  class="selectpicker form-control"
+                  data-live-search="true"
+                  multiple
+                  formControlName="equivalents"
+                >
+                  <option
+                    *ngFor="let product of products"
+                    [value]="product?.code"
+                    >{{ product?.article }}</option
+                  >
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">Remarque</div>
+            <div class="value">
+              <div class="input-group">
+                <textarea
+                  class="input--style-5"
+                  type="text"
+                  name="notes"
+                  formControlName="notes"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button
+              class="btn btn--radius-2 btn--red"
+              type="submit"
+              [disabled]="!PRODUCT_FORM.valid"
+            >
+              Ajouter
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
