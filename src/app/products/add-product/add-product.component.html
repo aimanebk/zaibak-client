@@ -48,6 +48,7 @@
                   class="selectpicker form-control"
                   name="type"
                   formControlName="type"
+                  title="Choose one of the following..."
                 >
                   <option *ngFor="let range of ranges">{{ range.name }}</option>
                 </select>
@@ -84,9 +85,7 @@
                   multiple
                   formControlName="discount"
                 >
-                  <option>Mustard</option>
-                  <option>Ketchup</option>
-                  <option>Relish</option>
+                  <option *ngFor='let discount of discounts' [value]='discount'>{{ discount }}%</option>
                 </select>
               </div>
             </div>
@@ -127,8 +126,10 @@
             <button
               class="btn btn--radius-2 btn--red"
               type="submit"
-              [disabled]="!PRODUCT_FORM.valid"
+              [disabled]="!PRODUCT_FORM.valid || loading"
             >
+             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+
               Ajouter
             </button>
           </div>

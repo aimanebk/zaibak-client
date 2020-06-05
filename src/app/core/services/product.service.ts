@@ -12,4 +12,8 @@ export class ProductService {
   getSellerProduct(){
     return this.http.get<SellerProduct[]>('product/user');
   }
+
+  addProduct(payload){
+    return this.http.post('product', payload);
+  }
 }

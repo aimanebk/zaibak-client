@@ -16,14 +16,16 @@ export class AddProductComponent implements OnInit, OnDestroy {
     article: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     type: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     sellingPrice: ['', [Validators.required]],
-    discount: [''],
-    equivalents: [''],
+    discount: [[]],
+    equivalents: [[]],
     notes: [''],
   });
   
   alive : boolean = true;
+  loading : boolean = false;
   products : SellerProduct[] = [];
   ranges : Range[] = [];
+  discounts : Number[]= [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 
 
   constructor(private formBuilder : FormBuilder, private productService : ProductService,
@@ -55,7 +57,18 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   submit(){
-    console.log(this.PRODUCT_FORM.value);
+    if(this.PRODUCT_FORM.dirty && this.PRODUCT_FORM.valid) {
+      this.loading = true;
+      this.productService.addProduct(this.PRODUCT_FORM.value)
+        .pipe(takeWhile(() => this.alive))
+        .subscribe((result : any) => {
+          console.log(result);
+          this.loading = false;
+        }, error => {
+          console.log(error);
+          this.loading = false;
+        })
+    }
   }
 
   ngOnDestroy(){
