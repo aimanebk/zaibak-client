@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
 import { SellerProduct } from 'src/app/core/models/sellerProduct';
 import { RangeService } from 'src/app/core/services/range.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-product',
@@ -29,7 +30,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
 
   constructor(private formBuilder : FormBuilder, private productService : ProductService,
-              private rangeService : RangeService) { }
+              private rangeService : RangeService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -62,10 +63,10 @@ export class AddProductComponent implements OnInit, OnDestroy {
       this.productService.addProduct(this.PRODUCT_FORM.value)
         .pipe(takeWhile(() => this.alive))
         .subscribe((result : any) => {
-          console.log(result);
+          this.showSuccess("Opération effectué avec succès")
           this.loading = false;
         }, error => {
-          console.log(error);
+          this.showError(error);
           this.loading = false;
         })
     }
@@ -73,6 +74,14 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.alive = false
+  }
+
+  showError(errorMessage){
+    this.toastr.error(errorMessage, "Erreur");
+  }
+
+  showSuccess(message){
+    this.toastr.success(message, "Success")
   }
 
 }
