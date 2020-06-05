@@ -11,4 +11,8 @@ export class RangeService {
   getRanges(){
     return this.http.get<Range[]>('range');
   }
+
+  addRange(payload){
+    return this.http.post('range', payload);
+  }
 }
