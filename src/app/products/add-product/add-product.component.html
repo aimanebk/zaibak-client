@@ -63,9 +63,7 @@
                         <div class="value">
                             <div class="input-group">
                                 <select class="selectpicker form-control" data-live-search="true" multiple formControlName="equivalents">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
+                                    <option *ngFor="let product of products" [value]='product.code'>{{ product.article }}</option>
                                 </select>
                             </div>
                         </div>
