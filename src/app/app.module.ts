@@ -15,6 +15,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
 
 
 
@@ -24,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     ControlMessagesComponent,
     RegisterComponent,
-    AddProductComponent
+    AddProductComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,
