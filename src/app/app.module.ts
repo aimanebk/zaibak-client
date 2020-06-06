@@ -18,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AdminDisplayProductsComponent } from './products/admin-display-products/admin-display-products.component';
 
 
 
@@ -30,7 +31,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AddProductComponent,
     AddCategoryComponent,
     AddSupplierComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminDisplayProductsComponent
   ],
   imports: [
     BrowserModule,

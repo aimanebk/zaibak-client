@@ -6,6 +6,7 @@ import { AddProductComponent } from './products/add-product/add-product.componen
 import { AuthGuard } from './core/helpers/auth.guard';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
+import { AdminDisplayProductsComponent } from './products/admin-display-products/admin-display-products.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path : 'admin/product/add' , component : AddProductComponent, canActivate : [AuthGuard]},
   { path : 'admin/category/add' , component : AddCategoryComponent, canActivate : [AuthGuard]},
   { path : 'admin/supplier/add' , component : AddSupplierComponent, canActivate : [AuthGuard]},
+  { path : 'admin/product' , component : AdminDisplayProductsComponent, canActivate : [AuthGuard]},
 
 
   // otherwise redirect to home
