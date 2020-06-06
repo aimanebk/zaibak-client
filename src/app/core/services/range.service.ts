@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Range } from '../models/range';
 
 @Injectable({
   providedIn: 'root'

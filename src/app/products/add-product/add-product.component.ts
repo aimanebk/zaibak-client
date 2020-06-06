@@ -1,17 +1,20 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
 import { SellerProduct } from 'src/app/core/models/sellerProduct';
 import { RangeService } from 'src/app/core/services/range.service';
 import { ToastrService } from 'ngx-toastr';
+import { Range } from 'src/app/core/models/range';
+
+declare var $: any;
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
-export class AddProductComponent implements OnInit, OnDestroy {
+export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
   PRODUCT_FORM = this.formBuilder.group({
     code: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     article: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
@@ -35,6 +38,12 @@ export class AddProductComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getProducts();
     this.getRanges();
+  }
+
+  ngAfterViewInit() :void {
+    setTimeout(() => {
+      $('.selectpicker').selectpicker();      
+    },100);
   }
 
   getProducts(){
