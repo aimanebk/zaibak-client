@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { AuthGuard } from './core/helpers/auth.guard';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
+import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path : 'admin/product/add' , component : AddProductComponent, canActivate : [AuthGuard]},
   { path : 'admin/category/add' , component : AddCategoryComponent, canActivate : [AuthGuard]},
+  { path : 'admin/supplier/add' , component : AddSupplierComponent, canActivate : [AuthGuard]},
 
 
   // otherwise redirect to home

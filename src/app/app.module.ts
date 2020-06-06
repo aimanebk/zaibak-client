@@ -16,6 +16,7 @@ import { AddProductComponent } from './products/add-product/add-product.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
+import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
 
 
 
@@ -26,7 +27,8 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
     ControlMessagesComponent,
     RegisterComponent,
     AddProductComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    AddSupplierComponent
   ],
   imports: [
     BrowserModule,
