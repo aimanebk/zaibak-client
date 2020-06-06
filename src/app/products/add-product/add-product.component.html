@@ -50,7 +50,7 @@
                   formControlName="type"
                   title="Choose one of the following..."
                 >
-                  <option *ngFor="let range of ranges">{{ range.name }}</option>
+                  <option *ngFor="let range of ranges">{{ range?.name }}</option>
                 </select>
                 <control-messages
                   class="error-messages"
