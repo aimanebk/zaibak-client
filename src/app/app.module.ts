@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -28,7 +29,8 @@ import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.comp
     RegisterComponent,
     AddProductComponent,
     AddCategoryComponent,
-    AddSupplierComponent
+    AddSupplierComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
