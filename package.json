@@ -25,6 +25,7 @@
     "bootstrap": "^4.5.0",
     "bootstrap-select": "^1.13.17",
     "jquery": "^3.5.1",
+    "ngx-bootstrap": "^5.6.1",
     "ngx-toastr": "^12.1.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",

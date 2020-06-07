@@ -1,1 +1,34 @@
-<p>admin-display-products works!</p>
+<div>
+    <form class="form-inline" [formGroup]="SEARCH_FORM" (submit)="search()">
+        <div class="form-group">
+          <label for="inputCode">Code</label>
+          <input type="text" id="inputCode" class="form-control mx-sm-3 input--style-5" formControlName="productCode">
+        </div>
+        <div class="form-group">
+          <label for="inputCategory">Gamme</label>
+          <select
+          class="selectpicker form-control mx-sm-3"
+          id = "inputCategory"
+          name="category"
+          formControlName="category"
+          title="Choose one of the following..."
+          >
+            <option *ngFor="let range of ranges">{{ range?.name }}</option>
+          </select>        
+        </div>
+        <div class="form-group">
+          <label for="inputCategory">Date</label>
+          <input type="text"
+          placeholder="Daterangepicker"
+          class="form-control mx-sm-3 input--style-5"
+          bsDaterangepicker
+          [bsValue]="bsInlineRangeValue"
+          [maxDate]="today"
+          [bsConfig] = "{displayMonths : 1}"
+          formControlName = "date">       
+        </div>
+
+        <button class="btn btn-primary" type="submit">Submit form</button>
+
+      </form>
+</div>

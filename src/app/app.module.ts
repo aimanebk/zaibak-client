@@ -19,7 +19,7 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminDisplayProductsComponent } from './products/admin-display-products/admin-display-products.component';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -42,7 +42,8 @@ import { AdminDisplayProductsComponent } from './products/admin-display-products
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
