@@ -20,6 +20,7 @@ import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.comp
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminDisplayProductsComponent } from './products/admin-display-products/admin-display-products.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { AgGridModule } from '@ag-grid-community/angular';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    AgGridModule.withComponents([])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
