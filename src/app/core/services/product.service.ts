@@ -16,4 +16,8 @@ export class ProductService {
   addProduct(payload){
     return this.http.post('product', payload);
   }
+
+  getAdminProducts(payload){  
+    return this.http.get('product', {params : payload});
+  }
 }

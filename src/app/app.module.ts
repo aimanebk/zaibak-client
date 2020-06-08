@@ -18,7 +18,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { AdminDisplayProductsComponent } from './products/admin-display-products/admin-display-products.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { AgGridModule } from '@ag-grid-community/angular';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AddProductComponent,
     AddCategoryComponent,
     AddSupplierComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminDisplayProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    BsDatepickerModule.forRoot(),
+    AgGridModule.withComponents([])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
