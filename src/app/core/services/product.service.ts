@@ -20,4 +20,8 @@ export class ProductService {
   getAdminProducts(payload){  
     return this.http.get('product', {params : payload});
   }
+
+  getAdminOneProduct(productID){
+    return this.http.get('product/'+ productID)
+  }
 }

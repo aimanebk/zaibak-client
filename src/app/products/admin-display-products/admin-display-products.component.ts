@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { RangeService } from 'src/app/core/services/range.service';
 import { takeWhile } from 'rxjs/operators';
@@ -9,6 +9,7 @@ import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-mod
 import { Module } from '@ag-grid-community/core';
 import { Product } from 'src/app/core/models/product';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 
@@ -68,7 +69,8 @@ export class AdminDisplayProductsComponent implements OnInit, AfterViewInit, OnD
 
 
   constructor(private formBuilder : FormBuilder, private rangeService : RangeService,
-              private productService : ProductService, private toastr : ToastrService) { 
+              private productService : ProductService, private toastr : ToastrService,
+              private router : Router, private ngZone : NgZone) { 
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
 
@@ -125,6 +127,7 @@ export class AdminDisplayProductsComponent implements OnInit, AfterViewInit, OnD
 
   onRowClicked($event){
     console.log($event);
+    this.ngZone.run(() => this.router.navigate(['admin/product', $event.data._id]));
   }
 
   setupSearchQuery(){
