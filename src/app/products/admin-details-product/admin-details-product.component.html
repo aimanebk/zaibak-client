@@ -1,2 +1,6 @@
 <app-product-infos [product] = "product"></app-product-infos>
-<p>details-product works!</p>
+<app-product-purchase *ngIf="product" [purchases] = "product.purchaseVariation" ></app-product-purchase>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>

@@ -1,3 +1,5 @@
+import { Purchase } from './purchase';
+
 export class Product {
     _id : string;
     code: string;
@@ -8,6 +10,7 @@ export class Product {
     discount: [string];
     equivalents: [string];
     notes: string;
+    purchaseVariation : [Purchase]
     stockI: {
         _id : string;
         productCode : string;
