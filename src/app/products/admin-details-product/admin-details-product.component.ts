@@ -4,11 +4,11 @@ import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-details-product',
-  templateUrl: './details-product.component.html',
-  styleUrls: ['./details-product.component.scss']
+  selector: 'app-admin-details-product',
+  templateUrl: './admin-details-product.component.html',
+  styleUrls: ['./admin-details-product.component.scss']
 })
-export class DetailsProductComponent implements OnInit, OnDestroy {
+export class AdminDetailsProductComponent implements OnInit, OnDestroy {
   alive : boolean = true;
 
   constructor(private route : ActivatedRoute, private productService : ProductService)  { }

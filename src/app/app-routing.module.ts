@@ -7,7 +7,7 @@ import { AuthGuard } from './core/helpers/auth.guard';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
 import { AdminDisplayProductsComponent } from './products/admin-display-products/admin-display-products.component';
-import { DetailsProductComponent } from './products/details-product/details-product.component';
+import { AdminDetailsProductComponent } from './products/admin-details-product/admin-details-product.component';
 
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
   { path : 'admin/category/add' , component : AddCategoryComponent, canActivate : [AuthGuard]},
   { path : 'admin/supplier/add' , component : AddSupplierComponent, canActivate : [AuthGuard]},
   { path : 'admin/product' , component : AdminDisplayProductsComponent, canActivate : [AuthGuard]},
-  { path : 'admin/product/:id' , component : DetailsProductComponent, canActivate : [AuthGuard]},
+  { path : 'admin/product/:id' , component : AdminDetailsProductComponent, canActivate : [AuthGuard]},
 
 
   // otherwise redirect to home

@@ -21,7 +21,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AdminDisplayProductsComponent } from './products/admin-display-products/admin-display-products.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AgGridModule } from '@ag-grid-community/angular';
-import { DetailsProductComponent } from './products/details-product/details-product.component';
+import { AdminDetailsProductComponent } from './products/admin-details-product/admin-details-product.component';
 
 
 @NgModule({
@@ -35,7 +35,7 @@ import { DetailsProductComponent } from './products/details-product/details-prod
     AddSupplierComponent,
     NavbarComponent,
     AdminDisplayProductsComponent,
-    DetailsProductComponent
+    AdminDetailsProductComponent
   ],
   imports: [
     BrowserModule,
