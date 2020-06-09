@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
+import { Product } from 'src/app/core/models/product';
 
 @Component({
   selector: 'app-admin-details-product',
@@ -10,6 +11,7 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class AdminDetailsProductComponent implements OnInit, OnDestroy {
   alive : boolean = true;
+  product : Product;
 
   constructor(private route : ActivatedRoute, private productService : ProductService)  { }
 
@@ -21,8 +23,9 @@ export class AdminDetailsProductComponent implements OnInit, OnDestroy {
   getProduct(productID){
     this.productService.getAdminOneProduct(productID)
         .pipe(takeWhile(() => this.alive))
-        .subscribe(data => {
-          console.log(data);
+        .subscribe((data : Product[]) => {
+          if(data || data[0])
+            this.product = data[0]
         },error =>{
           console.log(error)
         });

@@ -5,6 +5,9 @@ export class Product {
     type: string;
     buyingPrice: number;
     sellingPrice: number;
+    discount: [string];
+    equivalents: [string];
+    notes: string;
     stockI: {
         _id : string;
         productCode : string;
