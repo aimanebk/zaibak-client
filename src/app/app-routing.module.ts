@@ -8,6 +8,7 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
 import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.component';
 import { AdminDisplayProductsComponent } from './products/admin-display-products/admin-display-products.component';
 import { AdminDetailsProductComponent } from './products/admin-details-product/admin-details-product.component';
+import { AdminUpdateProductComponent } from './products/admin-update-product/admin-update-product.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path : 'admin/category/add' , component : AddCategoryComponent, canActivate : [AuthGuard]},
   { path : 'admin/supplier/add' , component : AddSupplierComponent, canActivate : [AuthGuard]},
   { path : 'admin/product' , component : AdminDisplayProductsComponent, canActivate : [AuthGuard]},
+  { path : 'admin/product/update/:id' , component : AdminUpdateProductComponent, canActivate : [AuthGuard]},
   { path : 'admin/product/:id' , component : AdminDetailsProductComponent, canActivate : [AuthGuard]},
 
 

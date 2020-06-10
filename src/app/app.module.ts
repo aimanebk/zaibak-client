@@ -24,6 +24,7 @@ import { AgGridModule } from '@ag-grid-community/angular';
 import { AdminDetailsProductComponent } from './products/admin-details-product/admin-details-product.component';
 import { ProductInfosComponent } from './products/admin-details-product/product-infos/product-infos.component';
 import { ProductPurchaseComponent } from './products/admin-details-product/product-purchase/product-purchase.component';
+import { AdminUpdateProductComponent } from './products/admin-update-product/admin-update-product.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ProductPurchaseComponent } from './products/admin-details-product/produ
     AdminDisplayProductsComponent,
     AdminDetailsProductComponent,
     ProductInfosComponent,
-    ProductPurchaseComponent
+    ProductPurchaseComponent,
+    AdminUpdateProductComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { SellerProduct } from 'src/app/core/models/sellerProduct';
 import { RangeService } from 'src/app/core/services/range.service';
 import { ToastrService } from 'ngx-toastr';
 import { Range } from 'src/app/core/models/range';
+import { Product } from 'src/app/core/models/product';
 
 declare var $: any;
 
@@ -27,7 +28,7 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
   
   alive : boolean = true;
   loading : boolean = false;
-  products : SellerProduct[] = [];
+  products : Product[] = [];
   ranges : Range[] = [];
   discounts : Number[]= [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 
@@ -49,7 +50,7 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
   getProducts(){
     this.productService.getSellerProduct()
       .pipe(takeWhile(() => this.alive))
-      .subscribe((products : SellerProduct[]) => {
+      .subscribe((products : Product[]) => {
         this.products = products;
       }, error => {
         console.log(error);
@@ -66,7 +67,7 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
       })
   }
 
-  submit(){
+  submit(){ 
     if(this.PRODUCT_FORM.dirty && this.PRODUCT_FORM.valid) {
       this.loading = true;
       this.productService.addProduct(this.PRODUCT_FORM.value)
