@@ -25,6 +25,7 @@ import { AdminDetailsProductComponent } from './products/admin-details-product/a
 import { ProductInfosComponent } from './products/admin-details-product/product-infos/product-infos.component';
 import { ProductPurchaseComponent } from './products/admin-details-product/product-purchase/product-purchase.component';
 import { AdminUpdateProductComponent } from './products/admin-update-product/admin-update-product.component';
+import { SellProductComponent } from './products/sell-product/sell-product.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AdminUpdateProductComponent } from './products/admin-update-product/adm
     AdminDetailsProductComponent,
     ProductInfosComponent,
     ProductPurchaseComponent,
-    AdminUpdateProductComponent
+    AdminUpdateProductComponent,
+    SellProductComponent
   ],
   imports: [
     BrowserModule,
