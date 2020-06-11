@@ -36,4 +36,8 @@ export class ProductService {
   sellProduct(id, sellDetail){
     return this.http.post('sell/'+id, sellDetail);
   }
+
+  returnProduct(id, returnDetail){
+    return this.http.post('return/'+id, returnDetail);
+  }
 }
