@@ -32,4 +32,8 @@ export class ProductService {
   getStorekeeperOneProduct(productID){
     return this.http.get('product/user/'+ productID)
   }
+
+  sellProduct(id, sellDetail){
+    return this.http.post('sell/'+id, sellDetail);
+  }
 }
