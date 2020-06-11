@@ -1,0 +1,9 @@
+<app-product-infos [product] = "product"></app-product-infos>
+<app-product-purchase *ngIf="product" [purchases] = "product.purchaseVariation" ></app-product-purchase>
+<button type="button" class="btn btn-primary" [routerLink]="[ '/admin/product/update/',product?._id]" [state]="{ product : product }">Modifier</button>
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#sellProduct">Ajouter au panier</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+
+<app-sell-product [discounts]="product?.discount" [productID]="product?._id" [sellingPrice]= "product?.sellingPrice"></app-sell-product>
+

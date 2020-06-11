@@ -1,21 +1,27 @@
+import { Purchase } from './purchase';
+
 export class Product {
-    _id : string;
+    _id? : string;
     code: string;
     article: string;
     type: string;
-    buyingPrice: number;
-    sellingPrice: number;
-    stockI: {
+    buyingPrice?: number;
+    sellingPrice?: number;
+    discount: [string];
+    equivalents: [string];
+    notes: string;
+    purchaseVariation? : [Purchase]
+    stockI?: {
         _id : string;
         productCode : string;
         date : Date;
         stock : number
     };
-    stockF: {
+    stockF?: {
         _id : string;
         productCode : string;
         date : Date;
         stock : number
     };
-    out : number
+    out? : number
 }
