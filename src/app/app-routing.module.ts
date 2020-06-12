@@ -9,6 +9,7 @@ import { AddSupplierComponent } from './suppliers/add-supplier/add-supplier.comp
 import { AdminDisplayProductsComponent } from './products/admin-display-products/admin-display-products.component';
 import { AdminDetailsProductComponent } from './products/admin-details-product/admin-details-product.component';
 import { AdminUpdateProductComponent } from './products/admin-update-product/admin-update-product.component';
+import { ProductValueComponent } from './reports/product-value/product-value.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path : 'admin/product' , component : AdminDisplayProductsComponent, canActivate : [AuthGuard]},
   { path : 'admin/product/update/:id' , component : AdminUpdateProductComponent, canActivate : [AuthGuard]},
   { path : 'admin/product/:id' , component : AdminDetailsProductComponent, canActivate : [AuthGuard]},
+  { path : 'admin/report' , component : ProductValueComponent, canActivate : [AuthGuard]},
 
 
   // otherwise redirect to home
