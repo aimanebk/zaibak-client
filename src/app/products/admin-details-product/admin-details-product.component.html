@@ -3,8 +3,9 @@
 <button type="button" class="btn btn-primary" [routerLink]="[ '/admin/product/update/',product?._id]" [state]="{ product : product }">Modifier</button>
 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#sellProduct">Ajouter au panier</button>
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#returnProduct">Avoir</button>
-<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#purchaseProduct">Ajouter un achat</button>
 
 <app-sell-product [discounts]="product?.discount" [productID]="product?._id" [sellingPrice]= "product?.sellingPrice"></app-sell-product>
 
 <app-admin-return-product [productID]="product?._id"></app-admin-return-product>
+<app-admin-purchase-product [productID]="product?._id"></app-admin-purchase-product>
