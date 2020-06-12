@@ -30,6 +30,8 @@ import { AdminReturnProductComponent } from './products/admin-return-product/adm
 import { AdminPurchaseProductComponent } from './products/admin-purchase-product/admin-purchase-product.component';
 import { ProductValueComponent } from './reports/product-value/product-value.component';
 import { SearchQueryComponent } from './products/admin-display-products/search-query/search-query.component';
+import { TradesListComponent } from './trades/trades-list/trades-list.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { SearchQueryComponent } from './products/admin-display-products/search-q
     AdminReturnProductComponent,
     AdminPurchaseProductComponent,
     ProductValueComponent,
-    SearchQueryComponent
+    SearchQueryComponent,
+    TradesListComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { SearchQueryComponent } from './products/admin-display-products/search-q
     { provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

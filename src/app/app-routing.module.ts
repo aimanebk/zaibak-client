@@ -10,6 +10,7 @@ import { AdminDisplayProductsComponent } from './products/admin-display-products
 import { AdminDetailsProductComponent } from './products/admin-details-product/admin-details-product.component';
 import { AdminUpdateProductComponent } from './products/admin-update-product/admin-update-product.component';
 import { ProductValueComponent } from './reports/product-value/product-value.component';
+import { TradesListComponent } from './trades/trades-list/trades-list.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path : 'admin/product/update/:id' , component : AdminUpdateProductComponent, canActivate : [AuthGuard]},
   { path : 'admin/product/:id' , component : AdminDetailsProductComponent, canActivate : [AuthGuard]},
   { path : 'admin/report' , component : ProductValueComponent, canActivate : [AuthGuard]},
+  { path : 'admin/logs' , component : TradesListComponent, canActivate : [AuthGuard]},
 
 
   // otherwise redirect to home
