@@ -7,6 +7,7 @@ import { takeWhile } from 'rxjs/operators';
 import { Range } from 'src/app/core/models/range';
 import { Product } from 'src/app/core/models/product';
 import { formatDate } from '@angular/common';
+import { ReportService } from 'src/app/core/services/report.service';
 
 declare var $: any;
 
@@ -34,7 +35,8 @@ export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
   loading : boolean = false;
 
   constructor(private formBuilder : FormBuilder, private rangeService : RangeService,
-              private productService : ProductService, private toastr : ToastrService,) { 
+              private productService : ProductService, private toastr : ToastrService,
+              private reportService : ReportService) { 
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
 
@@ -63,10 +65,28 @@ export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
     let query = this.setupSearchQuery();
     if(this.searchType && this.searchType == 'products')
       this.getProducts(query)
+
+    if(this.searchType && this.searchType == 'reports')
+      this.getProductsValueReport(query)
+    
   }
 
   getProducts(query){
     this.productService.getAdminProducts(query)
+    .pipe(takeWhile(() => this.alive))
+    .subscribe((data : Product[]) => {
+      this.FiltredProducts.emit(data);
+      this.loading = false;
+      this.showSuccess('Opération effectué avec succès');
+    },
+    error => {
+      this.loading = false
+      this.showError(error)
+    });
+  }
+
+  getProductsValueReport(query){
+    this.reportService.getProductsValueReport(query)
     .pipe(takeWhile(() => this.alive))
     .subscribe((data : Product[]) => {
       this.FiltredProducts.emit(data);

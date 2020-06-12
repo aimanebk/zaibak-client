@@ -23,5 +23,7 @@ export class Product {
         date : Date;
         stock : number
     };
-    out? : number
+    out? : number;
+    startValue? : number;
+    endValue? : number;
 }
