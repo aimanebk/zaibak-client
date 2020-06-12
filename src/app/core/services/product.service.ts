@@ -40,4 +40,8 @@ export class ProductService {
   returnProduct(id, returnDetail){
     return this.http.post('return/'+id, returnDetail);
   }
+
+  purchaseProduct(id, purchaseDetails){
+    return this.http.post('purchase/'+id, purchaseDetails);
+  }
 }

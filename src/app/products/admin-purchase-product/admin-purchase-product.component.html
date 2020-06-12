@@ -1,0 +1,97 @@
+<div class="modal fade" #purchaseProduct id="purchaseProduct" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="purchaseProductLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="purchaseProductLabel">Ajouter au panier</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="PURCHASE_FORM" (submit)="submit()">
+        <div class="modal-body">
+                <div class="form-row">
+                  <div class="name">Quantité</div>
+                  <div class="value">
+                    <div class="input-group">
+                        <input
+                            class="input--style-5"
+                            type="number"
+                            name="quantite"
+                            min="1"
+                            formControlName="quantite"
+                        />
+                        <control-messages
+                            class="error-messages"
+                            [control]="PURCHASE_FORM.get('quantite')"
+                        ></control-messages>
+                    </div>
+                  </div>
+                </div>
+                  <div class="form-row">
+                    <div class="name">Fournisseur</div>
+                    <div class="value">
+                      <div class="input-group">
+                        <select
+                          class="selectpicker form-control"
+                          name="supplier"
+                          formControlName="supplier"
+                          title="Choose one of the following..."
+                        >
+                          <option *ngFor="let supplier of suppliers">{{ supplier?.name }}</option>
+                        </select>
+                        <control-messages
+                          class="error-messages"
+                          [control]="PURCHASE_FORM.get('supplier')"
+                        ></control-messages>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="name">Ref-Facture</div>
+                    <div class="value">
+                      <div class="input-group">
+                        <input
+                          class="input--style-5"
+                          type="text"
+                          name="refInvoice"
+                          formControlName="refInvoice"
+                        />
+                        <control-messages
+                          class="error-messages"
+                          [control]="PURCHASE_FORM.get('refInvoice')"
+                        ></control-messages>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="name">Prix d'achat (Total)</div>
+                    <div class="value">
+                      <div class="input-group">
+                        <input
+                          class="input--style-5"
+                          type="number"
+                          name="price"
+                          formControlName="price"
+                        />
+                        <control-messages
+                          class="error-messages"
+                          [control]="PURCHASE_FORM.get('price')"
+                        ></control-messages>
+                      </div>
+                    </div>
+                  </div>
+                <div>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!PURCHASE_FORM.valid || loading">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Ajouter
+          </button>
+        </div>
+    </form>    
+
+      </div>
+    </div>
+  </div>
