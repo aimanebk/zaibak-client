@@ -41,7 +41,9 @@ export class AdminDisplayProductsComponent implements OnInit, AfterViewInit, OnD
 		{headerName: 'Code', field: 'code' },
 		{headerName: 'Article', field: 'article'},
 		{headerName: 'Gamme', field: 'type'},
-		{headerName: `Prix d'achat`, field: 'buyingPrice'},
+		{headerName: `Prix d'achat`,  valueGetter: function(params) {
+      return parseFloat(params.data.buyingPrice).toFixed(2);
+    }},
 		{headerName: 'Prix de vente', field: 'sellingPrice'},
 		{headerName: 'Stock Initial',  valueGetter: function(params) {
       if(!params.data.stockI)
