@@ -72,20 +72,6 @@ export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
       });   
   }
 
-  getProductsValueReport(query){
-    this.reportService.getProductsValueReport(query)
-    .pipe(takeWhile(() => this.alive))
-    .subscribe((data : Product[]) => {
-      // this.FiltredProducts.emit(data);
-      this.loading = false;
-      this.showSuccess('Opération effectué avec succès');
-    },
-    error => {
-      this.loading = false
-      this.showError(error)
-    });
-  }
-
   setupSearchQuery(){
     let query = {...this.SEARCH_FORM.value};
     
