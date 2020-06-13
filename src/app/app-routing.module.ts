@@ -11,12 +11,14 @@ import { AdminDetailsProductComponent } from './products/admin-details-product/a
 import { AdminUpdateProductComponent } from './products/admin-update-product/admin-update-product.component';
 import { ProductValueComponent } from './reports/product-value/product-value.component';
 import { TradesListComponent } from './trades/trades-list/trades-list.component';
+import { Role } from './core/models/role';
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path : 'admin/product/add' , component : AddProductComponent, canActivate : [AuthGuard]},
+  { path : 'admin/product/add' , component : AddProductComponent, canActivate : [AuthGuard],
+  data: { roles: [Role.Admin] }},
   { path : 'admin/category/add' , component : AddCategoryComponent, canActivate : [AuthGuard]},
   { path : 'admin/supplier/add' , component : AddSupplierComponent, canActivate : [AuthGuard]},
   { path : 'admin/product' , component : AdminDisplayProductsComponent, canActivate : [AuthGuard]},
