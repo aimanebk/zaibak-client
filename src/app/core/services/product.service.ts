@@ -25,8 +25,8 @@ export class ProductService {
     return this.http.get('product', {params : payload});
   }
 
-  getAdminOneProduct(productID){
-    return this.http.get('product/'+ productID)
+  getAdminOneProduct(productID, query){
+    return this.http.get('product/'+ productID, {params : query})
   }
 
   getStorekeeperOneProduct(productID){

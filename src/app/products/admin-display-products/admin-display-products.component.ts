@@ -55,6 +55,8 @@ export class AdminDisplayProductsComponent implements OnInit{
     filter: true,
   };
 
+  queryParams ;
+
 
   constructor(private productService : ProductService, private toastr : ToastrService,
               private router : Router, private ngZone : NgZone, private activatedRoute : ActivatedRoute) {  }
@@ -64,6 +66,7 @@ export class AdminDisplayProductsComponent implements OnInit{
     this.activatedRoute.queryParams
     .pipe(takeWhile(() => this.alive))
     .subscribe(query => {
+      this.queryParams = query;
       this.getProducts(query);
     });
   }
@@ -85,7 +88,7 @@ export class AdminDisplayProductsComponent implements OnInit{
 
   onRowClicked($event){
     console.log($event);
-    this.ngZone.run(() => this.router.navigate(['admin/product', $event.data._id]));
+    this.ngZone.run(() => this.router.navigate(['admin/product', $event.data._id], { queryParams: this.queryParams}));
   }
 
   showSuccess(message){

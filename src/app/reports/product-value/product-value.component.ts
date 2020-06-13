@@ -45,6 +45,7 @@ export class ProductValueComponent implements OnInit {
     filter: true,
   };
 
+  queryParams ;
 
   constructor(private reportService : ReportService, private toastr : ToastrService,
               private router : Router, private ngZone : NgZone, private activatedRoute : ActivatedRoute) {  }
@@ -54,6 +55,7 @@ export class ProductValueComponent implements OnInit {
     this.activatedRoute.queryParams
     .pipe(takeWhile(() => this.alive))
     .subscribe(query => {
+      this.queryParams = query;
       this.getProductsValue(query);
     });
   }
@@ -74,8 +76,7 @@ export class ProductValueComponent implements OnInit {
   }
 
   onRowClicked($event){
-    console.log($event);
-    this.ngZone.run(() => this.router.navigate(['admin/product', $event.data._id]));
+    this.ngZone.run(() => this.router.navigate(['admin/product', $event.data._id], { queryParams: this.queryParams}));
   }
 
   showSuccess(message){

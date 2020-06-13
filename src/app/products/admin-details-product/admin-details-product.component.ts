@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
 import { Product } from 'src/app/core/models/product';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-admin-details-product',
@@ -13,15 +14,20 @@ export class AdminDetailsProductComponent implements OnInit, OnDestroy {
   alive : boolean = true;
   product : Product;
 
-  constructor(private route : ActivatedRoute, private productService : ProductService)  { }
+  constructor(private activatedRoute : ActivatedRoute, private productService : ProductService)  { }
 
   ngOnInit(): void {
-    let currentProdId = this.route.snapshot.params['id'];
-    this.getProduct(currentProdId);
+    let currentProdId = this.activatedRoute.snapshot.params['id'];
+    //LISTEN TO QUERY CHANGES
+    this.activatedRoute.queryParams
+      .pipe(takeWhile(() => this.alive))
+      .subscribe(query => {
+        this.getProduct(currentProdId, query);
+      });
   }
 
-  getProduct(productID){
-    this.productService.getAdminOneProduct(productID)
+  getProduct(productID, query){
+    this.productService.getAdminOneProduct(productID, query)
         .pipe(takeWhile(() => this.alive))
         .subscribe((data : Product[]) => {
           if(data || data[0])
