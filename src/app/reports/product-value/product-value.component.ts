@@ -5,7 +5,7 @@ import { Product } from 'src/app/core/models/product';
 import { ReportService } from 'src/app/core/services/report.service';
 import { ToastrService } from 'ngx-toastr';
 import { takeWhile } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-value',
@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class ProductValueComponent implements OnInit {
 
   alive : boolean = true;
+  loading : boolean = false;
   modules: Module[] = [ClientSideRowModelModule];
 
   columnDefs = [
@@ -46,30 +47,39 @@ export class ProductValueComponent implements OnInit {
 
 
   constructor(private reportService : ReportService, private toastr : ToastrService,
-              private router : Router, private ngZone : NgZone) {  }
+              private router : Router, private ngZone : NgZone, private activatedRoute : ActivatedRoute) {  }
 
   ngOnInit(): void {
-    this.getProductsValue();
+    //LISTEN TO ROUTE QUERY PARAMS CHANGE
+    this.activatedRoute.queryParams
+    .pipe(takeWhile(() => this.alive))
+    .subscribe(query => {
+      this.getProductsValue(query);
+    });
   }
 
-  getProductsValue(){
-    this.reportService.getProductsValueReport({})
+  getProductsValue(query){
+    this.loading = true;
+    this.reportService.getProductsValueReport(query)
     .pipe(takeWhile(() => this.alive))
     .subscribe((data : Product[]) => {
       this.rowData = data ;
+      this.showSuccess('Opération effectué avec succès');
+      this.loading = false;
     },
     error => {
       this.showError(error);
+      this.loading = false;
     })
-  }
-
-  getFiltredProduct($event){
-    this.rowData = $event;
   }
 
   onRowClicked($event){
     console.log($event);
     this.ngZone.run(() => this.router.navigate(['admin/product', $event.data._id]));
+  }
+
+  showSuccess(message){
+    this.toastr.success(message, "Success")
   }
 
   showError(errorMessage){
