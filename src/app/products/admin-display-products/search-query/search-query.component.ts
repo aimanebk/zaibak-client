@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, Output, EventEmitter, Input  } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, Output, EventEmitter, Input, OnChanges  } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { RangeService } from 'src/app/core/services/range.service';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +8,7 @@ import { Range } from 'src/app/core/models/range';
 import { Product } from 'src/app/core/models/product';
 import { formatDate } from '@angular/common';
 import { ReportService } from 'src/app/core/services/report.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 declare var $: any;
 
@@ -17,8 +18,7 @@ declare var $: any;
   styleUrls: ['./search-query.component.scss']
 })
 export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
-  @Input() searchType : string;
-  @Output() FiltredProducts = new EventEmitter<Product[]>();
+  @Input() loading : boolean;
 
   SEARCH_FORM = this.formBuilder.group({
     productCode: [''],
@@ -32,12 +32,14 @@ export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
   today = new Date();
   ranges : Range[] = [];
   alive : boolean = true;
-  loading : boolean = false;
+  load : boolean = true;
 
   constructor(private formBuilder : FormBuilder, private rangeService : RangeService,
               private productService : ProductService, private toastr : ToastrService,
-              private reportService : ReportService) { 
+              private reportService : ReportService, private router : Router,
+              private activatedRoute: ActivatedRoute) { 
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
+
   }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() :void {
     setTimeout(() => {
       $('.selectpicker').selectpicker();      
-    },100);
+    },500);
   }
 
   getRanges(){
@@ -61,35 +63,20 @@ export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   search(){   
-    this.loading = true;
     let query = this.setupSearchQuery();
-    if(this.searchType && this.searchType == 'products')
-      this.getProducts(query)
-
-    if(this.searchType && this.searchType == 'reports')
-      this.getProductsValueReport(query)
-    
-  }
-
-  getProducts(query){
-    this.productService.getAdminProducts(query)
-    .pipe(takeWhile(() => this.alive))
-    .subscribe((data : Product[]) => {
-      this.FiltredProducts.emit(data);
-      this.loading = false;
-      this.showSuccess('Opération effectué avec succès');
-    },
-    error => {
-      this.loading = false
-      this.showError(error)
-    });
+    this.router.navigate(
+      [], 
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: query, 
+      });   
   }
 
   getProductsValueReport(query){
     this.reportService.getProductsValueReport(query)
     .pipe(takeWhile(() => this.alive))
     .subscribe((data : Product[]) => {
-      this.FiltredProducts.emit(data);
+      // this.FiltredProducts.emit(data);
       this.loading = false;
       this.showSuccess('Opération effectué avec succès');
     },

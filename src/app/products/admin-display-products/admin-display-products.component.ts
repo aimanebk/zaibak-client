@@ -9,7 +9,7 @@ import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-mod
 import { Module } from '@ag-grid-community/core';
 import { Product } from 'src/app/core/models/product';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -20,6 +20,7 @@ import { Router } from '@angular/router';
 export class AdminDisplayProductsComponent implements OnInit{
 
   alive : boolean = true;
+  loading : boolean = false;
   modules: Module[] = [ClientSideRowModelModule];
 
   columnDefs = [
@@ -56,30 +57,39 @@ export class AdminDisplayProductsComponent implements OnInit{
 
 
   constructor(private productService : ProductService, private toastr : ToastrService,
-              private router : Router, private ngZone : NgZone) {  }
+              private router : Router, private ngZone : NgZone, private activatedRoute : ActivatedRoute) {  }
 
   ngOnInit(): void {
-    this.getProducts();
+    //LISTEN TO ROUTE QUERY PARAMS CHANGE
+    this.activatedRoute.queryParams
+    .pipe(takeWhile(() => this.alive))
+    .subscribe(query => {
+      this.getProducts(query);
+    });
   }
 
-  getProducts(){
-    this.productService.getAdminProducts({})
+  getProducts(query){
+    this.loading = true;
+    this.productService.getAdminProducts(query)
     .pipe(takeWhile(() => this.alive))
     .subscribe((data : Product[]) => {
       this.rowData = data ;
+      this.showSuccess('Opération effectué avec succès');
+      this.loading = false;
     },
     error => {
       this.showError(error);
+      this.loading = false;
     })
-  }
-
-  getFiltredProduct($event){
-    this.rowData = $event;
   }
 
   onRowClicked($event){
     console.log($event);
     this.ngZone.run(() => this.router.navigate(['admin/product', $event.data._id]));
+  }
+
+  showSuccess(message){
+    this.toastr.success(message, "Success")
   }
 
   showError(errorMessage){
