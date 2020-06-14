@@ -1,22 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../core/services/authentication.service';
 import { Router } from '@angular/router';
+import { User } from '../core/models/user';
+import { Role } from '../core/models/role';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  constructor(private authenticationService : AuthenticationService, private router : Router) { }
+  user: User;
 
-  ngOnInit(): void {
+  constructor(private authenticationService: AuthenticationService) {
+      this.authenticationService.currentUser.subscribe(x => this.user = x);
   }
 
-  logOut(){
-    this.authenticationService.logout();
-    this.router.navigate(['/']);
+  get isAdmin() {
+      return this.user && this.user.role === Role.Admin;
+  }
+
+  logOut() {
+      this.authenticationService.logout();
   }
 
 }

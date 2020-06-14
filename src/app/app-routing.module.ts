@@ -11,23 +11,59 @@ import { AdminDetailsProductComponent } from './products/admin-details-product/a
 import { AdminUpdateProductComponent } from './products/admin-update-product/admin-update-product.component';
 import { ProductValueComponent } from './reports/product-value/product-value.component';
 import { TradesListComponent } from './trades/trades-list/trades-list.component';
+import { Role } from './core/models/role';
 
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path : 'admin/product/add' , component : AddProductComponent, canActivate : [AuthGuard]},
-  { path : 'admin/category/add' , component : AddCategoryComponent, canActivate : [AuthGuard]},
-  { path : 'admin/supplier/add' , component : AddSupplierComponent, canActivate : [AuthGuard]},
-  { path : 'admin/product' , component : AdminDisplayProductsComponent, canActivate : [AuthGuard]},
-  { path : 'admin/product/update/:id' , component : AdminUpdateProductComponent, canActivate : [AuthGuard]},
-  { path : 'admin/product/:id' , component : AdminDetailsProductComponent, canActivate : [AuthGuard]},
-  { path : 'admin/report' , component : ProductValueComponent, canActivate : [AuthGuard]},
-  { path : 'admin/logs' , component : TradesListComponent, canActivate : [AuthGuard]},
-
+  { 
+    path : 'admin',
+    canActivate : [AuthGuard],
+    data: { roles: [Role.Admin] },
+    children : [
+      { 
+        path : 'product',
+        children : [
+          {
+            path : '',
+            component : AdminDisplayProductsComponent,
+          },
+          { 
+            path : 'add' ,
+            component : AddProductComponent
+          },
+          { 
+            path : 'update/:id' ,
+            component : AdminUpdateProductComponent
+          },
+          { 
+            path : ':id' ,
+            component : AdminDetailsProductComponent
+          },
+        ],
+      },
+      { 
+        path : 'category/add' ,
+        component : AddCategoryComponent
+      },
+      { 
+        path : 'supplier/add' ,
+        component : AddSupplierComponent
+      },
+      { 
+        path : 'report' ,
+        component : ProductValueComponent
+      },
+      { 
+        path : 'logs' ,
+        component : TradesListComponent
+      },
+    ]
+  },
 
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
