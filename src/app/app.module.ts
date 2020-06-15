@@ -33,6 +33,7 @@ import { SearchQueryComponent } from './products/admin-display-products/search-q
 import { TradesListComponent } from './trades/trades-list/trades-list.component';
 import { DatePipe } from '@angular/common';
 import { MainComponent } from './main/main.component';
+import { StorekeeperDisplayProductsComponent } from './products/storekeeper/storekeeper-display-products/storekeeper-display-products.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { MainComponent } from './main/main.component';
     ProductValueComponent,
     SearchQueryComponent,
     TradesListComponent,
-    MainComponent
+    MainComponent,
+    StorekeeperDisplayProductsComponent
   ],
   imports: [
     BrowserModule,

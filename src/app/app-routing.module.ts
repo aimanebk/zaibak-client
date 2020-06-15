@@ -13,6 +13,7 @@ import { ProductValueComponent } from './reports/product-value/product-value.com
 import { TradesListComponent } from './trades/trades-list/trades-list.component';
 import { Role } from './core/models/role';
 import { MainComponent } from './main/main.component';
+import { StorekeeperDisplayProductsComponent } from './products/storekeeper/storekeeper-display-products/storekeeper-display-products.component';
 
 
 const routes: Routes = [
@@ -69,6 +70,16 @@ const routes: Routes = [
           },
         ]
       },
+      {
+        path : 'storekeeper',
+        data: { roles: [Role.User, Role.Admin] },
+        children : [
+          {
+            path : 'product',
+            component : StorekeeperDisplayProductsComponent
+          }
+        ]
+      }
     ]
   },
 

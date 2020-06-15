@@ -29,6 +29,10 @@ export class ProductService {
     return this.http.get('product/'+ productID, {params : query})
   }
 
+  getStorekeeperProducts(){
+    return this.http.get('product/user/')
+  }
+
   getStorekeeperOneProduct(productID){
     return this.http.get('product/user/'+ productID)
   }

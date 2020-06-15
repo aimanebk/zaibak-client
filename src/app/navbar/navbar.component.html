@@ -9,6 +9,9 @@
         <li *ngIf="isAdmin" class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['admin/product']">Accueil</a>
         </li>
+        <li *ngIf="isStoreKeeper" class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['storekeeper/product']">Accueil</a>
+        </li>
         <li *ngIf="isAdmin" class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['admin/product/add']">Ajouter Produit</a>
         </li>
