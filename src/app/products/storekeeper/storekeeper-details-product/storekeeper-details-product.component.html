@@ -1,1 +1,4 @@
 <app-product-infos [product]="product" [isAdmin]="false"></app-product-infos>
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#sellProduct">Ajouter au panier</button>
+
+<app-sell-product [discounts]="product?.discount" [productID]="product?._id" [sellingPrice]= "product?.sellingPrice"></app-sell-product>
