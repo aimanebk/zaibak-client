@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         .subscribe((data : any ) => {
           console.log(data);
         }, error => {
-          console.log(error.error);
+          console.log(error);
           this.error = error.error;
         });
     }
