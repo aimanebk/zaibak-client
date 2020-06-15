@@ -8,6 +8,7 @@ import { Product } from 'src/app/core/models/product';
 })
 export class ProductInfosComponent implements OnInit, OnChanges {
   @Input() product : Product
+  @Input() isAdmin : boolean;
   constructor() { }
 
   ngOnInit(): void {

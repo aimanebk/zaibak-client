@@ -14,6 +14,7 @@ import { TradesListComponent } from './trades/trades-list/trades-list.component'
 import { Role } from './core/models/role';
 import { MainComponent } from './main/main.component';
 import { StorekeeperDisplayProductsComponent } from './products/storekeeper/storekeeper-display-products/storekeeper-display-products.component';
+import { StorekeeperDetailsProductComponent } from './products/storekeeper/storekeeper-details-product/storekeeper-details-product.component';
 
 
 const routes: Routes = [
@@ -76,7 +77,16 @@ const routes: Routes = [
         children : [
           {
             path : 'product',
-            component : StorekeeperDisplayProductsComponent
+            children : [
+              {
+                path : '',
+                component : StorekeeperDisplayProductsComponent
+              },
+              {
+                path : ':id',
+                component : StorekeeperDetailsProductComponent
+              }
+            ]
           }
         ]
       }

@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
 import { Product } from 'src/app/core/models/product';
 import { Module } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-storekeeper-display-products',
@@ -47,7 +48,8 @@ export class StorekeeperDisplayProductsComponent implements OnInit, OnDestroy {
 
   };
 
-  constructor(private productService : ProductService) { }
+  constructor(private productService : ProductService, private ngZone : NgZone,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -63,9 +65,8 @@ export class StorekeeperDisplayProductsComponent implements OnInit, OnDestroy {
       });
   }
 
-
   onRowClicked($event){
-    console.log($event);
+    this.ngZone.run(() => this.router.navigate(['storekeeper/product', $event.data._id]));
   }
 
   ngOnDestroy(){
