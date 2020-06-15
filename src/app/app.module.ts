@@ -34,6 +34,7 @@ import { TradesListComponent } from './trades/trades-list/trades-list.component'
 import { DatePipe } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import { StorekeeperDisplayProductsComponent } from './products/storekeeper/storekeeper-display-products/storekeeper-display-products.component';
+import { StorekeeperDetailsProductComponent } from './products/storekeeper/storekeeper-details-product/storekeeper-details-product.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { StorekeeperDisplayProductsComponent } from './products/storekeeper/stor
     SearchQueryComponent,
     TradesListComponent,
     MainComponent,
-    StorekeeperDisplayProductsComponent
+    StorekeeperDisplayProductsComponent,
+    StorekeeperDetailsProductComponent
   ],
   imports: [
     BrowserModule,
