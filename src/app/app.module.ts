@@ -32,6 +32,7 @@ import { ProductValueComponent } from './reports/product-value/product-value.com
 import { SearchQueryComponent } from './products/admin-display-products/search-query/search-query.component';
 import { TradesListComponent } from './trades/trades-list/trades-list.component';
 import { DatePipe } from '@angular/common';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { DatePipe } from '@angular/common';
     AdminPurchaseProductComponent,
     ProductValueComponent,
     SearchQueryComponent,
-    TradesListComponent
+    TradesListComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

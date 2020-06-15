@@ -12,55 +12,66 @@ import { AdminUpdateProductComponent } from './products/admin-update-product/adm
 import { ProductValueComponent } from './reports/product-value/product-value.component';
 import { TradesListComponent } from './trades/trades-list/trades-list.component';
 import { Role } from './core/models/role';
+import { MainComponent } from './main/main.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { 
-    path : 'admin',
+    path : '',
     canActivate : [AuthGuard],
-    data: { roles: [Role.Admin] },
     children : [
+      {
+        path : '',
+        component : MainComponent
+      },
       { 
-        path : 'product',
+        path : 'admin',
+        data: { roles: [Role.Admin] },
         children : [
-          {
-            path : '',
-            component : AdminDisplayProductsComponent,
+          { 
+            path : 'product',
+            children : [
+              {
+                path : '',
+                component : AdminDisplayProductsComponent,
+              },
+              { 
+                path : 'add' ,
+                component : AddProductComponent
+              },
+              { 
+                path : 'update/:id' ,
+                component : AdminUpdateProductComponent
+              },
+              { 
+                path : ':id' ,
+                component : AdminDetailsProductComponent
+              },
+            ],
           },
           { 
-            path : 'add' ,
-            component : AddProductComponent
+            path : 'category/add' ,
+            component : AddCategoryComponent
           },
           { 
-            path : 'update/:id' ,
-            component : AdminUpdateProductComponent
+            path : 'supplier/add' ,
+            component : AddSupplierComponent
           },
           { 
-            path : ':id' ,
-            component : AdminDetailsProductComponent
+            path : 'report' ,
+            component : ProductValueComponent
           },
-        ],
-      },
-      { 
-        path : 'category/add' ,
-        component : AddCategoryComponent
-      },
-      { 
-        path : 'supplier/add' ,
-        component : AddSupplierComponent
-      },
-      { 
-        path : 'report' ,
-        component : ProductValueComponent
-      },
-      { 
-        path : 'logs' ,
-        component : TradesListComponent
+          { 
+            path : 'logs' ,
+            component : TradesListComponent
+          },
+        ]
       },
     ]
   },
+
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'login' }
