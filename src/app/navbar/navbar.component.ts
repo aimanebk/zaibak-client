@@ -12,6 +12,7 @@ import { take } from 'rxjs/operators';
 })
 export class NavbarComponent {
   @Input() isAdmin : boolean;
+  @Input() isStoreKeeper : boolean;
 
   constructor(private authenticationService: AuthenticationService) {}
 

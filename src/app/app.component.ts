@@ -18,12 +18,19 @@ export class AppComponent {
       this.authenticationService.currentUser.subscribe(x => {
           this.user = x;
           if(this.user && this.user.role == Role.Admin)
-            this.router.navigate(['/admin/product'])
+            this.router.navigate(['/admin/product']);
+
+          if(this.user && this.user.role == Role.User)
+            this.router.navigate(['/storekeeper/product'])
         });
       this.authenticationService.initRoles().pipe(take(1)).subscribe(x => {});
   }
 
   get isAdmin() {
       return this.user && this.user.role === Role.Admin;
+  }
+
+  get isStoreKeeper() {
+      return this.user && this.user.role === Role.User;
   }
 }
