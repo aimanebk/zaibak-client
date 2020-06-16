@@ -24,6 +24,7 @@ export class AdminUpdateProductComponent implements OnInit {
     type: ['', [Validators.required, Validators.maxLength(1)]],
     sellingPrice: ['', [Validators.required]],
     discount: [[]],
+    specialDiscount: [],
     equivalents: [],
     notes: [''],
   });
@@ -107,11 +108,12 @@ export class AdminUpdateProductComponent implements OnInit {
         })
   }
 
-  fillUpdateForm(product){
+  fillUpdateForm(product : Product){
     this.UPDATE_FORM.get('article').setValue(product.article);
     this.UPDATE_FORM.get('type').setValue([product.type]);
     this.UPDATE_FORM.get('sellingPrice').setValue(product.sellingPrice);
     this.UPDATE_FORM.get('discount').setValue(product.discount);
+    this.UPDATE_FORM.get('specialDiscount').setValue(product.specialDiscount);
     this.UPDATE_FORM.get('equivalents').setValue(product.equivalents);
     this.UPDATE_FORM.get('notes').setValue(product.notes); 
   }
