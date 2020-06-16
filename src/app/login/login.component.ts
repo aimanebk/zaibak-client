@@ -3,6 +3,7 @@ import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../core/services/authentication.service';
+import { Role } from '../core/models/role';
 
 @Component({
   selector: 'app-login',
@@ -25,8 +26,13 @@ export class LoginComponent implements OnInit {
   login(){
     if(this.LOGIN_FORM.dirty && this.LOGIN_FORM.valid) {
       this.authenticationService.login(this.LOGIN_FORM.value)
-        .subscribe((data : any ) => {
-          console.log(data);
+        .subscribe((user : any ) => {
+          if(user && user.role == Role.Admin)
+          this.router.navigate(['/admin/product']);
+  
+          if(user && user.role == Role.User)
+            this.router.navigate(['/storekeeper/product']);
+          console.log(user);
         }, error => {
           console.log(error);
           this.error = error.error;

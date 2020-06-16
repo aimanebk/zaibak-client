@@ -15,14 +15,7 @@ export class AppComponent {
   user: User;
 
   constructor(private authenticationService: AuthenticationService, private router : Router) {
-      this.authenticationService.currentUser.subscribe(x => {
-          this.user = x;
-          if(this.user && this.user.role == Role.Admin)
-            this.router.navigate(['/admin/product']);
-
-          if(this.user && this.user.role == Role.User)
-            this.router.navigate(['/storekeeper/product'])
-        });
+      this.authenticationService.currentUser.subscribe(x => this.user = x);
       this.authenticationService.initRoles().pipe(take(1)).subscribe(x => {});
   }
 
