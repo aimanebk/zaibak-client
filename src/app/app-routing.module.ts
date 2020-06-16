@@ -95,7 +95,7 @@ const routes: Routes = [
 
 
   // otherwise redirect to home
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
