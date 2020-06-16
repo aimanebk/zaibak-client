@@ -91,6 +91,19 @@
             </div>
           </div>
           <div class="form-row">
+            <div class="name">Remise spéciale</div>
+            <div class="value">
+              <div class="input-group">
+                <select
+                  class="selectpicker form-control"
+                  formControlName="specialDiscount"
+                >
+                  <option *ngFor='let discount of discounts' [value]='discount'>{{ discount }}%</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
             <div class="name">Equivalent</div>
             <div class="value">
               <div class="input-group">

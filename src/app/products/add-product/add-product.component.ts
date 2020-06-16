@@ -22,6 +22,7 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
     type: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     sellingPrice: ['', [Validators.required]],
     discount: [[]],
+    specialDiscount: [],
     equivalents: [[]],
     notes: [''],
   });
