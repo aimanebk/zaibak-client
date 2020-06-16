@@ -12,8 +12,15 @@
         <li *ngIf="isStoreKeeper" class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['storekeeper/product']">Accueil</a>
         </li>
-        <li *ngIf="isAdmin" class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['admin/product/add']">Ajouter Produit</a>
+        <li *ngIf="isAdmin" class="nav-item dropdown" routerLinkActive="active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ajouter
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" [routerLink]="['admin/product/add']">Produit</a>
+            <a class="dropdown-item" [routerLink]="['admin/category/add']">Gamme</a>
+            <a class="dropdown-item" [routerLink]="['admin/supplier/add']">Fournisseur</a>
+          </div>
         </li>
         <li *ngIf="isAdmin" class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['admin/report']">Rapports</a>
