@@ -50,7 +50,7 @@ export class AuthenticationService {
     if(!this.user)
       return from([]);
 
-    return this.http.get('user/role/' + this.user._id)
+    return this.http.get('user/role')
       .pipe(map((user : { role : string }) => {
         console.log(user);
         if(!user){
