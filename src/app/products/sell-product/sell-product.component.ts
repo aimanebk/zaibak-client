@@ -14,6 +14,7 @@ declare var $: any;
 })
 export class SellProductComponent implements OnInit, OnChanges {
   @Input() discounts : [number];
+  @Input() specialDiscount : number;
   @Input() productID : string;
   @Input() sellingPrice : number;
 
@@ -26,6 +27,7 @@ export class SellProductComponent implements OnInit, OnChanges {
   disabled : boolean = false;
   loading : boolean = false;
   alive : boolean = true;
+  isGarageOwner : boolean = false;
   constructor(private authenticationService : AuthenticationService, private toastr : ToastrService,
               private productService : ProductService) { }
 
@@ -91,6 +93,12 @@ export class SellProductComponent implements OnInit, OnChanges {
         this.loading = false;
       })
     
+  }
+
+  updateSelect($event){
+    setTimeout(() => {
+      $('.selectpicker').selectpicker('refresh');
+    },100);
   }
 
   ngOnDestroy(){

@@ -5,7 +5,7 @@
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#returnProduct">Avoir</button>
 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#purchaseProduct">Ajouter un achat</button>
 
-<app-sell-product [discounts]="product?.discount" [productID]="product?._id" [sellingPrice]= "product?.sellingPrice"></app-sell-product>
+<app-sell-product [discounts]="product?.discount" [productID]="product?._id" [sellingPrice]= "product?.sellingPrice" [specialDiscount]="product?.specialDiscount"></app-sell-product>
 
 <app-admin-return-product [productID]="product?._id"></app-admin-return-product>
 <app-admin-purchase-product [productID]="product?._id"></app-admin-purchase-product>

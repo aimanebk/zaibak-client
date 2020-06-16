@@ -7,7 +7,8 @@ export class Product {
     type: string;
     buyingPrice?: number;
     sellingPrice?: number;
-    discount: [string];
+    discount: [number];
+    specialDiscount : number;
     equivalents: [string];
     notes: string;
     purchaseVariation? : [Purchase]
