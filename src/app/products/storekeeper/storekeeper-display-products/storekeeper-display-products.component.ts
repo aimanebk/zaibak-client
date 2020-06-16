@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
 import { Product } from 'src/app/core/models/product';
-import { Module } from '@ag-grid-community/core';
+import { Module, GridOptions } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class StorekeeperDisplayProductsComponent implements OnInit, OnDestroy {
   alive : boolean = true ;
+  quickSearchValue: string = '';
 
   modules: Module[] = [ClientSideRowModelModule];
 
@@ -35,7 +36,8 @@ export class StorekeeperDisplayProductsComponent implements OnInit, OnDestroy {
 
       return 'Oui';
     }},
-	];
+    {headerName : 'Equivalents' , field : 'equivalents', hide: true }
+  ];
 
 	rowData : Product[] = [];
   
@@ -47,6 +49,12 @@ export class StorekeeperDisplayProductsComponent implements OnInit, OnDestroy {
     floatingFilter: true,
 
   };
+
+  gridOptions : GridOptions = {
+    columnDefs: this.columnDefs,
+    rowData: null,
+    enableFilter: true
+};
 
   constructor(private productService : ProductService, private ngZone : NgZone,
               private router : Router) { }
@@ -65,6 +73,10 @@ export class StorekeeperDisplayProductsComponent implements OnInit, OnDestroy {
       });
   }
 
+  onQuickFilterChanged() {
+    this.gridOptions.api.setQuickFilter(this.quickSearchValue);
+  }
+
   onRowClicked($event){
     this.ngZone.run(() => this.router.navigate(['storekeeper/product', $event.data._id]));
   }
@@ -72,6 +84,9 @@ export class StorekeeperDisplayProductsComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.alive = false;
   }
+
+
+
 
 
 
