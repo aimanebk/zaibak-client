@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../core/services/authentication.service';
 import { Role } from '../core/models/role';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,12 @@ export class LoginComponent implements OnInit {
   faUser = faUser;
   faKey = faKey;
   LOGIN_FORM = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
+    name: ['', [Validators.required]],
+    password: ['', [Validators.required]],
   });
   error ;
-  constructor(private fb: FormBuilder, private router : Router, private authenticationService : AuthenticationService) { }
+  constructor(private fb: FormBuilder, private router : Router, 
+              private authenticationService : AuthenticationService, private toastrService : ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -32,10 +34,8 @@ export class LoginComponent implements OnInit {
   
           if(user && user.role == Role.User)
             this.router.navigate(['/storekeeper/product']);
-          console.log(user);
-        }, error => {
-          console.log(error);
-          this.error = error.error;
+        }, err => {
+          this.toastrService.error(err);
         });
     }
   }
