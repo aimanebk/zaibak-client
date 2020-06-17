@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthenticationService } from '../core/services/authentication.service';
-import { Router } from '@angular/router';
-import { User } from '../core/models/user';
-import { Role } from '../core/models/role';
-import { take } from 'rxjs/operators';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +11,8 @@ import { take } from 'rxjs/operators';
 export class NavbarComponent {
   @Input() isAdmin : boolean;
   @Input() isStoreKeeper : boolean;
+
+  faSignOutAlt = faSignOutAlt;
 
   constructor(private authenticationService: AuthenticationService) {}
 

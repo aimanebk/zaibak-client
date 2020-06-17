@@ -1,0 +1,8 @@
+@import "../shared/styles/variables.scss";
+
+$backgound-color : $total-red-color;
+
+
+.bg-blue{
+    background: $backgound-color;
+}
