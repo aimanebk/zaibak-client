@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/services/user.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,8 @@ export class RegisterComponent implements OnInit {
 
   error;
 
-  constructor(private userService : UserService, private formBuilder : FormBuilder, private router : Router ) { }
+  constructor(private userService : UserService, private formBuilder : FormBuilder, 
+              private router : Router, private toastrService : ToastrService ) { }
 
   ngOnInit(): void {
   }
@@ -26,9 +28,11 @@ export class RegisterComponent implements OnInit {
     if(this.REGISTER_FORM.dirty && this.REGISTER_FORM.valid) {
       this.userService.regiser(this.REGISTER_FORM.value)
         .subscribe((data : any ) => {
-          this.router.navigate(['/']);
+          this.toastrService.success("Opération effectué avec succès");
+          this.router.navigate(['/login']);
         }, error => {
-          this.error = error.error;
+          console.log(error)
+          this.toastrService.error(error);
         });
     }
   }

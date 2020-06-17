@@ -1,9 +1,5 @@
 @import "../shared/styles/auth.scss";
 
-$bg-darkyellow : #f39c12;
-$bg-red : $total-red-color;
-$white-color : #fff;
-
   .user_card {
     @include user_card
   }
