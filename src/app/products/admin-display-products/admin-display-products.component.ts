@@ -6,7 +6,7 @@ import { Range } from 'src/app/core/models/range';
 import { ProductService } from 'src/app/core/services/product.service';
 import { formatDate } from '@angular/common';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { Module } from '@ag-grid-community/core';
+import { Module, GridOptions } from '@ag-grid-community/core';
 import { Product } from 'src/app/core/models/product';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -24,22 +24,22 @@ export class AdminDisplayProductsComponent implements OnInit{
   modules: Module[] = [ClientSideRowModelModule];
 
   columnDefs = [
-		{headerName: 'Code', field: 'code' },
-		{headerName: 'Article', field: 'article'},
-		{headerName: 'Gamme', field: 'type'},
-		{headerName: `Prix d'achat`,  valueGetter: function(params) {
+		{headerName: 'CODE', field: 'code' },
+		{headerName: 'ARTICLE', field: 'article'},
+		{headerName: 'GAMME', field: 'type'},
+		{headerName: `PRIX D'ACHAT`,  valueGetter: function(params) {
       return parseFloat(params.data.buyingPrice).toFixed(2);
     }},
-		{headerName: 'Prix de vente', field: 'sellingPrice'},
-		{headerName: 'Stock Initial',  valueGetter: function(params) {
+		{headerName: 'PRIX DE VENTE', field: 'sellingPrice'},
+		{headerName: 'STOCK INITIAL',  valueGetter: function(params) {
       if(!params.data.stockI)
           return 0;
       return params.data.stockI.stock;
     }},
-    {headerName: 'Q. Vendu', valueGetter: function(params) {
+    {headerName: 'Q. VENDU', valueGetter: function(params) {
       return params.data.out * -1;
     }},
-    {headerName: 'Stock Final', valueGetter: function(params) {
+    {headerName: 'STOCK FINAL', valueGetter: function(params) {
       if(!params.data.stockF)
           return 0;
       return params.data.stockF.stock;
@@ -50,10 +50,16 @@ export class AdminDisplayProductsComponent implements OnInit{
   
   defaultColDef = {
     flex: 1,
+    minWidth: 150,
     sortable: true,
     resizable: true,
     filter: true,
+    floatingFilter: true,
   };
+
+  gridOptions : GridOptions = {
+    rowStyle : { 'font-weight': 'normal' }
+};
 
   queryParams ;
 

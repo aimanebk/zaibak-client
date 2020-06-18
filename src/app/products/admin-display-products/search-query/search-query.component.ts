@@ -48,7 +48,7 @@ export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() :void {
     setTimeout(() => {
-      $('.selectpicker').selectpicker();      
+      $('.selectpicker').selectpicker();
     },500);
   }
 
