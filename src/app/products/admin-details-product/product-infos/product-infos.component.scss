@@ -1,48 +1,25 @@
-@import "../../../shared/styles/variables.scss";
-
-$background-color: $total-red-color;
-$title-color : $text-primary-color;
+@import "../../../shared/styles/cards.scss";
 
 /* ==========================================================================
      #TITLE
      ========================================================================== */
 .title {
-  font-size: 24px;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-align: center;
-  color: #fff;
+  @include title;
 }
 
 /* ==========================================================================
      #CARD
      ========================================================================== */
 .card {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background: #fff;
+  @include card;
 }
 
 .card-5 {
-  background: #fff;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  @include card-5;
 }
 
 .card-5 .card-heading {
-  padding: 20px 0;
-  background: $background-color;
-  -webkit-border-top-left-radius: 10px;
-  -moz-border-radius-topleft: 10px;
-  border-top-left-radius: 10px;
-  -webkit-border-top-right-radius: 10px;
-  -moz-border-radius-topright: 10px;
-  border-top-right-radius: 10px;
+  @include card-heading;
 }
 
 .card-5 .card-body {
@@ -58,9 +35,9 @@ $title-color : $text-primary-color;
 }
 
 .info--style {
-  font-weight: normal;
+  @include info--style;
 }
 
 .info--title--style {
-  color: $title-color;
+  @include info--title--style;
 }
