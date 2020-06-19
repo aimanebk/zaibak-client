@@ -1,9 +1,27 @@
-<app-product-infos [product] = "product" [isAdmin]="true"></app-product-infos>
-<app-product-purchase *ngIf="product" [purchases] = "product.purchaseVariation" ></app-product-purchase>
-<button type="button" class="btn btn-primary" [routerLink]="[ '/admin/product/update/',product?._id]" [state]="{ product : product }">Modifier</button>
-<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#sellProduct">Ajouter au panier</button>
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#returnProduct">Avoir</button>
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#purchaseProduct">Ajouter un achat</button>
+<div class="container-fluid h-100">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <app-product-infos [product]="product" [isAdmin]="true"></app-product-infos>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <button type="button" class="btn btn-primary" [routerLink]="[ '/admin/product/update/',product?._id]" [state]="{ product : product }">Modifier</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#sellProduct">Ajouter au panier</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#returnProduct">Avoir</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#purchaseProduct">Ajouter un achat</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <app-product-purchase *ngIf="product" [purchases] = "product.purchaseVariation" ></app-product-purchase>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 
 <app-sell-product [discounts]="product?.discount" [productID]="product?._id" [sellingPrice]= "product?.sellingPrice" [specialDiscount]="product?.specialDiscount"></app-sell-product>
 

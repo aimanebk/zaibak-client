@@ -22,18 +22,6 @@
   @include card-heading;
 }
 
-.card-5 .card-body {
-  padding: 52px 85px;
-  padding-bottom: 73px;
-}
-
-@media (max-width: 767px) {
-  .card-5 .card-body {
-    padding: 40px 30px;
-    padding-bottom: 50px;
-  }
-}
-
 .info--style {
   @include info--style;
 }
