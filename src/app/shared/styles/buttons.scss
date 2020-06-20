@@ -2,6 +2,12 @@
 
 $button-color : $total-red-color;
 $button-color-hover : $total-red-hover-color;
+$yellow-color : $total-yellow-color;
+$yellow-hover-color : $total-yellow-hover-color;
+$darkblue-color : $total-darkblue-color;
+$darkblue-hover-color : $total-darkblue-hover-color;
+$skyblue-color : $total-skyblue-color ;
+$skyblue-hover-color : $total-skyblue-hover-color;
 
 @mixin btn {
     display: inline-block;
@@ -27,8 +33,37 @@ $button-color-hover : $total-red-hover-color;
 
 @mixin btn--red {
     background: $total-red-color;
+    border-color: $total-red-color;
 }
 
 @mixin btn--red--hover {
     background: $button-color-hover;
+    border-color: $button-color-hover;
+}
+@mixin btn--yellow {
+    background: $yellow-color;
+    border-color: $yellow-color;
+}
+
+@mixin btn--yellow--hover {
+    background: $yellow-hover-color;
+    border-color: $yellow-hover-color;
+}
+@mixin btn--darkblue {
+    background: $darkblue-color;
+    border-color: $darkblue-color;
+}
+
+@mixin btn--darkblue--hover {
+    background: $darkblue-hover-color;
+    border-color: $darkblue-hover-color;
+}
+@mixin btn--skyblue {
+    background: $skyblue-color;
+    border-color: $skyblue-color;
+}
+
+@mixin btn--skyblue--hover {
+    background: $skyblue-hover-color;
+    border-color: $skyblue-hover-color;
 }

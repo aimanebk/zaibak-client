@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
 import { Product } from 'src/app/core/models/product';
-import { query } from '@angular/animations';
+import { faShoppingCart, faCartPlus, faExchangeAlt, faPencilAlt  } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin-details-product',
@@ -13,6 +13,10 @@ import { query } from '@angular/animations';
 export class AdminDetailsProductComponent implements OnInit, OnDestroy {
   alive : boolean = true;
   product : Product;
+  faShoppingCart = faShoppingCart;
+  faCartPlus = faCartPlus;
+  faExchangeAlt = faExchangeAlt;
+  faPencilAlt = faPencilAlt;
 
   constructor(private activatedRoute : ActivatedRoute, private productService : ProductService)  { }
 

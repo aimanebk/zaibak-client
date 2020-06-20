@@ -1,0 +1,48 @@
+@import "../../shared/styles/cards.scss";
+@import "../../shared/styles/buttons.scss";
+
+/* ==========================================================================
+     #TITLE
+     ========================================================================== */
+.title {
+  @include title;
+}
+
+/* ==========================================================================
+     #CARD
+     ========================================================================== */
+.card {
+  @include card;
+}
+
+.card-5 {
+  @include card-5;
+  padding: 0;
+}
+
+.card-5 .card-heading {
+  @include card-heading;
+}
+
+.info--style {
+  @include info--style;
+}
+
+.info--title--style {
+  @include info--title--style;
+}
+
+.btn--yellow {
+  @include btn--yellow;
+  font-weight: 500;
+}
+
+.btn--yellow:hover {
+  @include btn--yellow--hover;
+}
+
+@media(max-width: 1100px){
+  .btn--yellow {
+    min-height: 100px;
+  }
+}

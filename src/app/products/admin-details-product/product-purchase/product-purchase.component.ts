@@ -36,7 +36,8 @@ export class ProductPurchaseComponent implements OnInit, OnChanges {
   };
 
   gridOptions : GridOptions = {
-    domLayout : 'autoHeight'
+    domLayout : 'autoHeight',
+    rowStyle : { 'font-weight': 'normal' }
   }
 
   constructor(private datePipe : DatePipe) { }
