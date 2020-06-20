@@ -80,3 +80,9 @@ input[type="number"] {
 .btn--red:hover {
   @include btn--red--hover;
 }
+
+
+.error-messages{
+  font-weight: bold;
+  color: crimson;
+}

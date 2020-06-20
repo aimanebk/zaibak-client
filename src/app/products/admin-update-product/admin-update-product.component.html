@@ -1,17 +1,17 @@
-<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+<div class="container-fluid h-100 py-5">
     <div class="wrapper wrapper--w790">
       <div class="card card-5">
         <div class="card-heading">
           <h2 class="title">Modifier produit</h2>
         </div>
-        <div class="card-body">
+        <div class="card-body p-5">
           <form [formGroup]="UPDATE_FORM" (submit)="submit()">
             <div class="form-row">
               <div class="name">Article</div>
               <div class="value">
                 <div class="input-group">
                   <input
-                    class="input--style-5"
+                    class="input--style"
                     type="text"
                     name="article"
                     formControlName="article"
@@ -48,7 +48,7 @@
               <div class="value">
                 <div class="input-group">
                   <input
-                    class="input--style-5"
+                    class="input--style"
                     type="number"
                     name="sellingPrice"
                     formControlName="sellingPrice"
@@ -112,7 +112,7 @@
               <div class="value">
                 <div class="input-group">
                   <textarea
-                    class="input--style-5"
+                    class="input--style"
                     type="text"
                     name="notes"
                     formControlName="notes"
@@ -122,7 +122,7 @@
             </div>
             <div>
               <button
-                class="btn btn--radius-2 btn--red"
+                class="btn btn--radius-2 btn--red float-right"
                 type="submit"
                 [disabled]="!UPDATE_FORM.valid || loading"
               >
