@@ -19,11 +19,11 @@ $text-color : $text-primary-color;
     margin: 0;
     padding: 0;
     height: 100%;
-    background: -webkit-gradient(linear, left bottom, right top, from($bg-yellow), to($bg-skyblue));
-    background: -webkit-linear-gradient(bottom left, $bg-yellow 0%, $bg-skyblue 100%);
-    background: -moz-linear-gradient(bottom left, $bg-yellow 0%, $bg-skyblue 100%);
-    background: -o-linear-gradient(bottom left, $bg-yellow 0%, $bg-skyblue 100%);
-    background: linear-gradient(to top right, $bg-yellow 0%, $bg-skyblue 100%);
+    background: -webkit-gradient(linear, left bottom, right top, from($bg-yellow), to($bg-skyblue)) fixed;
+    background: -webkit-linear-gradient(bottom left, $bg-yellow 0%, $bg-skyblue 100%) fixed;
+    background: -moz-linear-gradient(bottom left, $bg-yellow 0%, $bg-skyblue 100%) fixed;
+    background: -o-linear-gradient(bottom left, $bg-yellow 0%, $bg-skyblue 100%) fixed;
+    background: linear-gradient(to top right, $bg-yellow 0%, $bg-skyblue 100%) fixed;
     font-size: 15px !important;
     font-weight: 700 !important;
   }
