@@ -1,0 +1,33 @@
+@import "./variables.scss";
+
+$name-color: $text-primary-color;
+
+@mixin form-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+@mixin form-row-name {
+  width: 125px;
+  color: $name-color;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+@mixin form-row-value {
+  width: -webkit-calc(100% - 125px);
+  width: -moz-calc(100% - 125px);
+  width: calc(100% - 125px);
+}

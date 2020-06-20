@@ -11,7 +11,8 @@ export class Product {
     specialDiscount : number;
     equivalents: [string];
     notes: string;
-    purchaseVariation? : [Purchase]
+    purchaseVariation? : [Purchase];
+    stock : number;
     stockI?: {
         _id : string;
         productCode : string;

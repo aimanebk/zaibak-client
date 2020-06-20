@@ -1,1 +1,123 @@
-<p *ngIf="product">{{product | json}}</p>
+<div class="container-fluid py-5">
+  <div class="card card-5">
+    <div class="card-heading">
+      <h2 class="title">Détails du produit</h2>
+    </div>
+    <div class="card-body p-5">
+      <div class="row">
+        <div class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Code :</div>
+            <div class="col-7 col-md-7 info--style">{{ product?.code }}</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Atricle :</div>
+            <div class="col-7 col-md-7 info--style">{{ product?.article }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Gamme :</div>
+            <div class="col-7 col-md-7 info--style">{{ product?.type }}</div>
+          </div>
+        </div>
+        <div *ngIf="isAdmin" class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Q. Vendu :</div>
+            <div class="col-7 col-md-7 info--style">{{ -product?.out }}</div>
+          </div>
+        </div>
+        <div *ngIf="!isAdmin" class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Stock</div>
+            <div class="col-7 col-md-7 info--style">{{ product?.stock }}</div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isAdmin" class="row">
+        <div class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Stock Inital :</div>
+            <div class="col-7 col-md-7 info--style">
+              {{ product?.stockI?.stock || 'Non trouvé' }}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Stock Final :</div>
+            <div class="col-7 col-md-7 info--style">
+              {{ product?.stockF?.stock || 'Non trouvé' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div *ngIf="isAdmin" class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Prix d'achat :</div>
+            <div class="col-7 col-md-7 info--style">
+              {{ product?.buyingPrice?.toFixed(2) }}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Prix de vente :</div>
+            <div class="col-7 col-md-7 info--style">
+              {{ product?.sellingPrice }}
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!isAdmin" class="col-12 col-md-12 my-1">
+            <div class="row">
+              <div class="col-5 col-md-5 info--title--style">Remises :</div>
+              <div class="col-7 col-md-7 info--style">
+                {{ product?.discount }} (%)
+              </div>
+            </div>
+          </div>
+      </div>
+      <div *ngIf="isAdmin" class="row">
+        <div class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Remises :</div>
+            <div class="col-7 col-md-7 info--style">
+              {{ product?.discount }} (%)
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">
+              Remise speciale :
+            </div>
+            <div class="col-7 col-md-7 info--style">
+              {{ product?.specialDiscount }} (%)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Equivalents :</div>
+            <div class="col-7 col-md-7 info--style">
+              {{ product?.equivalents }}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-12 my-1">
+          <div class="row">
+            <div class="col-5 col-md-5 info--title--style">Remarque :</div>
+            <div class="col-7 col-md-7 info--style">{{ product?.notes }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
