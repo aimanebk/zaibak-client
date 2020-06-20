@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { Module } from '@ag-grid-community/core';
+import { Module, GridOptions } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { Product } from 'src/app/core/models/product';
 import { ReportService } from 'src/app/core/services/report.service';
@@ -40,9 +40,15 @@ export class ProductValueComponent implements OnInit {
   
   defaultColDef = {
     flex: 1,
+    minWidth: 150,
     sortable: true,
     resizable: true,
     filter: true,
+    floatingFilter: true,
+  };
+
+  gridOptions : GridOptions = {
+    rowStyle : { 'font-weight': 'normal' }
   };
 
   queryParams ;
