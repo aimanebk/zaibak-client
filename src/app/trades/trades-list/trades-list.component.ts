@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LogsService } from 'src/app/core/services/logs.service';
 import { takeWhile } from 'rxjs/operators';
 import { Trade } from 'src/app/core/models/trade';
-import { Module } from '@ag-grid-community/core';
+import { Module, GridOptions } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { ToastrService } from 'ngx-toastr';
 import { formatDate, DatePipe } from '@angular/common';
@@ -55,10 +55,22 @@ export class TradesListComponent implements OnInit, OnDestroy {
   
   defaultColDef = {
     flex: 1,
+    minWidth: 150,
     sortable: true,
     resizable: true,
     filter: true,
+    floatingFilter: true,
   };
+
+  gridOptions : GridOptions = {
+    rowStyle : { 'font-weight': 'normal' },
+    rowClassRules : {
+      'return--style': function(params) { return params.data.price < 0; },
+      'sell--style': function(params) { return params.data.price >= 0; },
+    }
+  };
+  
+
   constructor(private tradeService : LogsService, private toastr : ToastrService,
               private datePipe: DatePipe) { }
 
