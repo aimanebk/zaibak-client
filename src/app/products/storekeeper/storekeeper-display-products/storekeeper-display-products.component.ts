@@ -46,14 +46,17 @@ export class StorekeeperDisplayProductsComponent implements OnInit, OnDestroy {
     sortable: true,
     resizable: true,
     filter: true,
-    floatingFilter: true,
 
   };
 
   gridOptions : GridOptions = {
     columnDefs: this.columnDefs,
     rowData: null,
-    enableFilter: true
+    enableFilter: true,
+    rowStyle : { 'font-weight': 'normal' },
+    rowClassRules : {
+      'return--style': function(params) { return params.data.stock <= 5; },
+    }
 };
 
   constructor(private productService : ProductService, private ngZone : NgZone,
