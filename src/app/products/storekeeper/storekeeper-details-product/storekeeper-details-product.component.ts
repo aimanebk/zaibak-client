@@ -3,6 +3,8 @@ import { Product } from 'src/app/core/models/product';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-storekeeper-details-product',
@@ -12,6 +14,7 @@ import { takeWhile } from 'rxjs/operators';
 export class StorekeeperDetailsProductComponent implements OnInit, OnDestroy {
   alive : boolean = true;
   product : Product;
+  faShoppingCart = faShoppingCart;
 
   constructor(private activatedRoute : ActivatedRoute, private productService : ProductService)  { }
 
