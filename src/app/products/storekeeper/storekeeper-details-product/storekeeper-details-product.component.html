@@ -1,4 +1,23 @@
-<app-product-infos [product]="product" [isAdmin]="false"></app-product-infos>
-<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#sellProduct">Ajouter au panier</button>
+<div class="container h-100 py-3">
+    <div class="row">
+        <div class="col-12 col-md-9 mx-auto text-center">
+            <button
+            type="button"
+            class="btn btn--yellow btn-lg"
+            data-toggle="modal"
+            data-target="#sellProduct"
+          >
+          <fa-icon [icon]="faShoppingCart"></fa-icon>
+            Ajouter au panier
+          </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-9 mx-auto">
+            <app-product-infos [product]="product" [isAdmin]="false"></app-product-infos>
+        </div>
+    </div>
+</div>
+
 
 <app-sell-product [discounts]="product?.discount" [productID]="product?._id" [sellingPrice]= "product?.sellingPrice"></app-sell-product>
