@@ -1,0 +1,225 @@
+<div class="container h-100 py-4">
+  <div class="row">
+    <div class="col-12 col-md-12 bg-white" id="invoice" #invoice>
+      <div class="row justify-content-between pb-5">
+        <div class="col-6 col-md-4">
+          <img class="img-fluid" src="assets/imgs/Total-logo.png " />
+        </div>
+        <div class="col-6 col-md-4">
+          <img class="img-fluid" src="assets/imgs/Zaibak-logo-invoice.png" />
+        </div>
+      </div>
+      <hr />
+      <div class="row justify-content-end pb-5">
+        <div class="col-6 col-md-4">
+          <div class="row">
+            <div class="col-6 col-md-12">
+              <div class="row">
+                <div class="col-6 col-md-3">
+                  <input type="text" value="Tanger le :" placeholder="Ville" />
+                </div>
+                <div class="col-6 col-md-6">
+                  <input
+                    type="text"
+                    placeholder="Date"
+                    class="datePicker--style"
+                    bsDatepicker
+                    [bsConfig]="{ containerClass: 'theme-red' }"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-12">
+              <input type="text" placeholder="Sté .." [(ngModel)]="company" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-12">
+              <input type="text" value="ICE : " placeholder="ICE" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-12">
+              <input type="text" placeholder="Adresse 1" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-12">
+              <input type="text" placeholder="Adresse 2" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-12">
+              <input type="text" placeholder="Adresse 3" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row pb-5">
+        <div class="col-6 col-md-4 offset-md-2">
+          <input type="text" value="Facture N°" placeholder="Facture N° " />
+        </div>
+      </div>
+      <div class="row pb-5">
+        <div class="col-12 col-md-12 table-responsive">
+          <table class="table table-sm table-bordered text-center">
+            <thead>
+              <tr>
+                <th scope="col" class="w-10">DATE LIV</th>
+                <th scope="col" class="w-55">Désignation</th>
+                <th scope="col" class="w-7">Quantite</th>
+                <th scope="col" class="w-13">Prix Unitaire DH</th>
+                <th scope="col" class="w-20">Montant Net TTC/DH</th>
+              </tr>
+            </thead>
+            <tbody [formGroup]="INVOICE_FORM">
+              <tr
+                formArrayName="items"
+                *ngFor="
+                  let item of INVOICE_FORM.controls['items']['controls'];
+                  let i = index
+                "
+              >
+                <ng-container [formGroupName]="i">
+                  <td>
+                    <input
+                      type="text"
+                      placeholder="Date"
+                      class="datePicker--style w-100 center-text"
+                      bsDatepicker
+                      placement="right"
+                      [bsConfig]="{ containerClass: 'theme-red' }"
+                    />
+                  </td>
+                  <td>
+                    <input type="text" class="w-50" placeholder="Description" />
+                    <input type="text" class="w-50" placeholder="Automobile" />
+                  </td>
+                  <td>
+                    <input
+                      class="w-100 center-text"
+                      formControlName="quantite"
+                      placeholder="Quantité"
+                      (keyup)="amountsCalculator()"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      class="w-100 center-text"
+                      formControlName="price"
+                      placeholder="Prix"
+                      (keyup)="amountsCalculator()"
+                    />
+                  </td>
+                  <td>
+                    {{ item.value.quantite * item.value.price | number: "1.2" }}
+                    <button
+                      *ngIf="editPDF"
+                      type="button"
+                      class="btn btn-danger btn-circle btn-sm float-right"
+                      (click)="deleteRow(i)"
+                    >
+                      <fa-icon [icon]="faTrashAlt"></fa-icon>
+                    </button>
+                  </td>
+                </ng-container>
+              </tr>
+              <tr>
+                <td>
+                  <button
+                    *ngIf="editPDF"
+                    type="button"
+                    class="btn btn-success btn-circle btn-sm"
+                    (click)="addRow()"
+                  >
+                    <fa-icon [icon]="faPlus"></fa-icon>
+                  </button>
+                </td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="2"></td>
+                <td colspan="2">MONTANT HT</td>
+                <td>{{ amountHT | number: "1.2-2" }}</td>
+              </tr>
+              <tr>
+                <td colspan="2"></td>
+                <td colspan="2">TVA 20%</td>
+                <td>{{ tvaAmount | number: "1.2-2" }}</td>
+              </tr>
+              <tr>
+                <td colspan="2"></td>
+                <td colspan="2">MONTANT NET TTC</td>
+                <td>{{ totalAmountTTC | number: "1.2-2" }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row pb-5">
+        <div class="col-12 col-md-12">
+          Arrete la presente facture à la somme de
+          <input type="text" class="w-50" placeholder="Prix en lettre" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-12 mx-auto py-4 text-center">
+      <button
+        *ngIf="editPDF"
+        type="button"
+        class="btn--style--2 btn--radius btn--red mx-2"
+        (click)="changePdfState()"
+      >
+        <fa-icon [icon]="faTools"></fa-icon>
+        Préparer le PDF
+      </button>
+      <button
+        *ngIf="!editPDF"
+        type="button"
+        class="btn--style--2 btn--radius btn--red mx-2"
+        (click)="changePdfState()"
+      >
+        <fa-icon [icon]="faLongArrowAltLeft"></fa-icon>
+        Edit mode
+      </button>
+      <button
+        *ngIf="!editPDF"
+        type="button"
+        class="btn--style--2 btn--radius btn--red mx-2"
+        (click)="downloadPDF()"
+      >
+        <fa-icon [icon]="faCloudDownloadAlt"></fa-icon>
+        Telecharger PDF
+      </button>
+      <button
+        *ngIf="!editPDF"
+        type="button"
+        class="btn--style--2 btn--radius btn--red mx-2"
+        (click)="printInvoice()"
+      >
+        <fa-icon [icon]="faPrint"></fa-icon>
+        Imprimer
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer fixed-bottom container">
+  <hr />
+  <p class="text-center">{{ ZAIBAK_INFO_1 }}</p>
+  <p class="text-center">{{ ZAIBAK_INFO_2 }}</p>
+</footer>
