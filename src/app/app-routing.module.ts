@@ -15,6 +15,7 @@ import { Role } from './core/models/role';
 import { MainComponent } from './main/main.component';
 import { StorekeeperDisplayProductsComponent } from './products/storekeeper/storekeeper-display-products/storekeeper-display-products.component';
 import { StorekeeperDetailsProductComponent } from './products/storekeeper/storekeeper-details-product/storekeeper-details-product.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 
 const routes: Routes = [
@@ -68,6 +69,10 @@ const routes: Routes = [
           { 
             path : 'logs' ,
             component : TradesListComponent
+          },
+          { 
+            path : 'invoice' ,
+            component : InvoiceComponent
           },
         ]
       },

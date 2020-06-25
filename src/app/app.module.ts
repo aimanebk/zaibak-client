@@ -35,6 +35,7 @@ import { DatePipe } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import { StorekeeperDisplayProductsComponent } from './products/storekeeper/storekeeper-display-products/storekeeper-display-products.component';
 import { StorekeeperDetailsProductComponent } from './products/storekeeper/storekeeper-details-product/storekeeper-details-product.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { StorekeeperDetailsProductComponent } from './products/storekeeper/store
     TradesListComponent,
     MainComponent,
     StorekeeperDisplayProductsComponent,
-    StorekeeperDetailsProductComponent
+    StorekeeperDetailsProductComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,
