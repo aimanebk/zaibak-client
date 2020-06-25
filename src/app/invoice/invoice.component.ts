@@ -43,8 +43,8 @@ export class InvoiceComponent implements OnInit {
 
   createItem() {
     return this.fb.group({
-      quantite: [],
-      price: [],
+      quantite: [1],
+      price: [0],
     })
   }
 
