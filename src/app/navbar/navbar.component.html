@@ -2,7 +2,9 @@
   *ngIf="isAdmin || isStoreKeeper"
   class="navbar navbar-expand-md navbar-dark bg-blue"
 >
-  <a class="navbar-brand" [routerLink]="['/']">Logo</a>
+  <a class="navbar-brand" [routerLink]="['/']">
+    <fa-icon [icon]="faHome"></fa-icon>
+  </a>
   <button
     class="navbar-toggler collapsed"
     type="button"

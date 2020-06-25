@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthenticationService } from '../core/services/authentication.service';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faHome } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -13,6 +13,7 @@ export class NavbarComponent {
   @Input() isStoreKeeper : boolean;
 
   faSignOutAlt = faSignOutAlt;
+  faHome = faHome;
 
   constructor(private authenticationService: AuthenticationService) {}
 
