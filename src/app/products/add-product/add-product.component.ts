@@ -7,6 +7,7 @@ import { RangeService } from 'src/app/core/services/range.service';
 import { ToastrService } from 'ngx-toastr';
 import { Range } from 'src/app/core/models/range';
 import { Product } from 'src/app/core/models/product';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -35,7 +36,8 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
 
 
   constructor(private formBuilder : FormBuilder, private productService : ProductService,
-              private rangeService : RangeService, private toastr: ToastrService) { }
+              private rangeService : RangeService, private toastr: ToastrService,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -76,6 +78,7 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
         .subscribe((result : any) => {
           this.showSuccess("Opération effectué avec succès")
           this.loading = false;
+          this.router.navigate(['/']);
         }, error => {
           this.showError(error);
           this.loading = false;
