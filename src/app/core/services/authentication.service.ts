@@ -52,7 +52,6 @@ export class AuthenticationService {
 
     return this.http.get('user/role')
       .pipe(map((user : { role : string }) => {
-        console.log(user);
         if(!user){
           this.logout();
           return from([]);

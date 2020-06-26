@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './product-purchase.component.html',
   styleUrls: ['./product-purchase.component.scss']
 })
-export class ProductPurchaseComponent implements OnInit, OnChanges {
+export class ProductPurchaseComponent implements OnInit {
   @Input() purchases : [ Purchase ];
 
   modules: Module[] = [ClientSideRowModelModule];
@@ -43,10 +43,6 @@ export class ProductPurchaseComponent implements OnInit, OnChanges {
   constructor(private datePipe : DatePipe) { }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges(){
-    console.log(this.purchases);
   }
 
 }

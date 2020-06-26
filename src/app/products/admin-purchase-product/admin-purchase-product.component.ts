@@ -44,7 +44,6 @@ export class AdminPurchaseProductComponent implements OnInit, OnChanges, OnDestr
         .pipe(takeWhile(() => this.alive))
         .subscribe((result : Supplier[]) => {
             this.suppliers = result;
-            console.log('Suppliers')
         },error => {
 
         });

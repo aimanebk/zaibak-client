@@ -31,7 +31,6 @@ export class StorekeeperDetailsProductComponent implements OnInit, OnDestroy {
         .subscribe((data : Product) => {
           // if(data || data[0])
             this.product = data
-            console.log(this.product)
         },error =>{
           console.log(error)
         });

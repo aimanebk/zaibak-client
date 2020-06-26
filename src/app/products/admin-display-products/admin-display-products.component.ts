@@ -93,7 +93,6 @@ export class AdminDisplayProductsComponent implements OnInit{
   }
 
   onRowClicked($event){
-    console.log($event);
     this.ngZone.run(() => this.router.navigate(['admin/product', $event.data._id], { queryParams: this.queryParams}));
   }
 
