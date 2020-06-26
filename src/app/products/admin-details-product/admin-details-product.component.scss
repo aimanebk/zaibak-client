@@ -1,5 +1,20 @@
 @import "../../shared/styles/cards.scss";
 @import "../../shared/styles/buttons.scss";
+@import "../../shared/styles/input.scss";
+
+
+/* ==========================================================================
+     #FORM
+     ========================================================================== */
+
+input {
+  @include input
+}
+
+.input--style {
+  @include input--style
+}
+
 
 /* ==========================================================================
      #TITLE
@@ -35,6 +50,22 @@
 /* ==========================================================================
      #BUTTONS
      ========================================================================== */
+.btn--style--2 {
+    @include btn;
+    line-height: 34px;
+}
+
+.btn--radius {
+    @include btn--radius
+}
+
+.btn--red {
+    @include btn--red
+}
+
+.btn--red:hover {
+    @include btn--red--hover
+}
 
 .btn--yellow {
   @include btn--yellow;
