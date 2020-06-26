@@ -127,6 +127,7 @@ export class AdminUpdateProductComponent implements OnInit {
         .subscribe((result : any) => {
           this.showSuccess("Opération effectué avec succès")
           this.loading = false;
+          this.router.navigate(['admin/product/'+ this.currentProdId])
         }, error => {
           this.showError(error);
           this.loading = false;
