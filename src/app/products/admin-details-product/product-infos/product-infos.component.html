@@ -28,7 +28,7 @@
         <div *ngIf="isAdmin" class="col-12 col-md-12 my-1">
           <div class="row">
             <div class="col-5 col-md-5 info--title--style">Q. Vendu :</div>
-            <div class="col-7 col-md-7 info--style">{{ -product?.out }}</div>
+            <div class="col-7 col-md-7 info--style">{{ product?.out | onlyPositive }}</div>
           </div>
         </div>
         <div *ngIf="!isAdmin" class="col-12 col-md-12 my-1">

@@ -36,6 +36,7 @@ import { MainComponent } from './main/main.component';
 import { StorekeeperDisplayProductsComponent } from './products/storekeeper/storekeeper-display-products/storekeeper-display-products.component';
 import { StorekeeperDetailsProductComponent } from './products/storekeeper/storekeeper-details-product/storekeeper-details-product.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { OnlyPositivePipe } from './shared/pipes/only-positive.pipe';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { InvoiceComponent } from './invoice/invoice.component';
     MainComponent,
     StorekeeperDisplayProductsComponent,
     StorekeeperDetailsProductComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    OnlyPositivePipe
   ],
   imports: [
     BrowserModule,
