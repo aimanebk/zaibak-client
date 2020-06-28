@@ -44,7 +44,6 @@ import { RegisterModule } from './register/register.module';
 @NgModule({
   declarations: [
     AppComponent,
-    ControlMessagesComponent,
     AddProductComponent,
     AddCategoryComponent,
     AddSupplierComponent,
@@ -71,7 +70,8 @@ import { RegisterModule } from './register/register.module';
     AppRoutingModule,
     BsDatepickerModule.forRoot(),
     AgGridModule.withComponents([]),
-    SharedModule,
+    BrowserAnimationsModule, // required animations module
+    SharedModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },

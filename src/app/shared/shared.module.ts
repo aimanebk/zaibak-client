@@ -5,19 +5,32 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ControlMessagesComponent } from './control-messages/control-messages.component';
+import { RegisterRoutingModule } from '../register/register-routing.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ControlMessagesComponent
+  ],
   imports: [
     CommonModule,
+    RegisterRoutingModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+  ],
+  exports : [
+    ControlMessagesComponent,
+    RegisterRoutingModule,
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule,
   ]
 })
 export class SharedModule { }
