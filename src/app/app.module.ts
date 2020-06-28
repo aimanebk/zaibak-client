@@ -38,13 +38,13 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { OnlyPositivePipe } from './shared/pipes/only-positive.pipe';
 import { LoginModule } from './login/login.module';
 import { SharedModule } from './shared/shared.module';
+import { RegisterModule } from './register/register.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ControlMessagesComponent,
-    RegisterComponent,
     AddProductComponent,
     AddCategoryComponent,
     AddSupplierComponent,

@@ -19,7 +19,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
 
 const routes: Routes = [
   { path : 'login', loadChildren : () => import('./login/login.module').then(m => m.LoginModule )},
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', loadChildren : () => import('./register/register.module').then(m => m.RegisterModule )},
   { 
     path : '',
     canActivate : [AuthGuard],
