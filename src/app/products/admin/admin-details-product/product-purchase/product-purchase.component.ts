@@ -16,7 +16,7 @@ export class ProductPurchaseComponent implements OnInit {
 
   columnDefs = [
 		{headerName: 'Date', valueGetter : params => {
-      if(!params.data.date)
+      if(!params.data || !params.data.date)
         return ''
       
       return this.datePipe.transform(params.data.date, 'dd-MM-yyyy')
