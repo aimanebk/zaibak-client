@@ -7,12 +7,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ControlMessagesComponent } from './control-messages/control-messages.component';
 import { RegisterRoutingModule } from '../register/register-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
-    ControlMessagesComponent
+    ControlMessagesComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +24,7 @@ import { RegisterRoutingModule } from '../register/register-routing.module';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(), // ToastrModule added
+    RouterModule
   ],
   exports : [
     ControlMessagesComponent,
@@ -29,6 +33,7 @@ import { RegisterRoutingModule } from '../register/register-routing.module';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule,
+    RouterModule
   ]
 })
 export class SharedModule { }

@@ -3,11 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/helpers/auth.guard';
 import { Role } from './core/models/role';
 import { MainComponent } from './main/main.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 
 const routes: Routes = [
-  { path : 'login', loadChildren : () => import('./login/login.module').then(m => m.LoginModule )},
-  { path: 'register', loadChildren : () => import('./register/register.module').then(m => m.RegisterModule )},
+  { 
+    path : 'login', 
+    loadChildren : () => import('./login/login.module').then(m => m.LoginModule )
+  },
+  { 
+    path: 'register', 
+    loadChildren : () => import('./register/register.module').then(m => m.RegisterModule )
+  },
   { 
     path : '',
     canActivate : [AuthGuard],
@@ -31,7 +38,10 @@ const routes: Routes = [
 
 
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { 
+    path: '**',
+    component : NotFoundComponent,
+  }
 ];
 
 @NgModule({
