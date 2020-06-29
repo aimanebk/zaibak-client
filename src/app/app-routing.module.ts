@@ -12,8 +12,6 @@ import { ProductValueComponent } from './reports/product-value/product-value.com
 import { TradesListComponent } from './trades/trades-list/trades-list.component';
 import { Role } from './core/models/role';
 import { MainComponent } from './main/main.component';
-import { StorekeeperDisplayProductsComponent } from './products/storekeeper/storekeeper-display-products/storekeeper-display-products.component';
-import { StorekeeperDetailsProductComponent } from './products/storekeeper/storekeeper-details-product/storekeeper-details-product.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 
 
@@ -78,22 +76,8 @@ const routes: Routes = [
       {
         path : 'storekeeper',
         data: { roles: [Role.User, Role.Admin] },
-        children : [
-          {
-            path : 'product',
-            children : [
-              {
-                path : '',
-                component : StorekeeperDisplayProductsComponent
-              },
-              {
-                path : ':id',
-                component : StorekeeperDetailsProductComponent
-              }
-            ]
-          }
-        ]
-      }
+        loadChildren : () => import('./storekeeper/storekeeper.module').then(m => m.StorekeeperModule )
+      },
     ]
   },
 

@@ -16,7 +16,6 @@ import { RegisterRoutingModule } from '../register/register-routing.module';
   ],
   imports: [
     CommonModule,
-    RegisterRoutingModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
@@ -25,7 +24,6 @@ import { RegisterRoutingModule } from '../register/register-routing.module';
   ],
   exports : [
     ControlMessagesComponent,
-    RegisterRoutingModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,

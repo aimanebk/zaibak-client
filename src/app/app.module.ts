@@ -21,10 +21,8 @@ import { AdminDisplayProductsComponent } from './products/admin/admin-display-pr
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AgGridModule } from '@ag-grid-community/angular';
 import { AdminDetailsProductComponent } from './products/admin/admin-details-product/admin-details-product.component';
-import { ProductInfosComponent } from './products/admin/admin-details-product/product-infos/product-infos.component';
 import { ProductPurchaseComponent } from './products/admin/admin-details-product/product-purchase/product-purchase.component';
 import { AdminUpdateProductComponent } from './products/admin/admin-update-product/admin-update-product.component';
-import { SellProductComponent } from './products/sell-product/sell-product.component';
 import { AdminReturnProductComponent } from './products/admin/admin-return-product/admin-return-product.component';
 import { AdminPurchaseProductComponent } from './products/admin/admin-purchase-product/admin-purchase-product.component';
 import { ProductValueComponent } from './reports/product-value/product-value.component';
@@ -32,13 +30,14 @@ import { SearchQueryComponent } from './products/admin/admin-display-products/se
 import { TradesListComponent } from './trades/trades-list/trades-list.component';
 import { DatePipe } from '@angular/common';
 import { MainComponent } from './main/main.component';
-import { StorekeeperDisplayProductsComponent } from './products/storekeeper/storekeeper-display-products/storekeeper-display-products.component';
-import { StorekeeperDetailsProductComponent } from './products/storekeeper/storekeeper-details-product/storekeeper-details-product.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { OnlyPositivePipe } from './shared/pipes/only-positive.pipe';
 import { LoginModule } from './login/login.module';
 import { SharedModule } from './shared/shared.module';
 import { RegisterModule } from './register/register.module';
+import { SellProductComponent } from './shared/components/sell-product/sell-product.component';
+import { ProductInfosComponent } from './shared/components/product-infos/product-infos.component';
+import { ComponentsModule } from './shared/components/components.module';
 
 
 @NgModule({
@@ -50,20 +49,15 @@ import { RegisterModule } from './register/register.module';
     NavbarComponent,
     AdminDisplayProductsComponent,
     AdminDetailsProductComponent,
-    ProductInfosComponent,
     ProductPurchaseComponent,
     AdminUpdateProductComponent,
-    SellProductComponent,
     AdminReturnProductComponent,
     AdminPurchaseProductComponent,
     ProductValueComponent,
     SearchQueryComponent,
     TradesListComponent,
     MainComponent,
-    StorekeeperDisplayProductsComponent,
-    StorekeeperDetailsProductComponent,
     InvoiceComponent,
-    OnlyPositivePipe
   ],
   imports: [
     BrowserModule,
@@ -71,7 +65,8 @@ import { RegisterModule } from './register/register.module';
     BsDatepickerModule.forRoot(),
     AgGridModule.withComponents([]),
     BrowserAnimationsModule, // required animations module
-    SharedModule
+    SharedModule,
+    ComponentsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
