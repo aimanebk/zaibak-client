@@ -43,6 +43,7 @@ export class StorekeeperDisplayProductsComponent implements OnInit, OnDestroy {
   
   defaultColDef = {
     flex: 1,
+    minWidth: 150,
     sortable: true,
     resizable: true,
     filter: true,
