@@ -1,0 +1,138 @@
+<div class="container-fluid h-100 py-5">
+    <div class="wrapper wrapper--w790">
+      <div class="card card-5">
+        <div class="card-heading">
+          <h2 class="title">Modifier produit</h2>
+        </div>
+        <div class="card-body p-5">
+          <form [formGroup]="UPDATE_FORM" (submit)="submit()">
+            <div class="form-row">
+              <div class="name">Article</div>
+              <div class="value">
+                <div class="input-group">
+                  <input
+                    class="input--style"
+                    type="text"
+                    name="article"
+                    formControlName="article"
+                  />
+                  <control-messages
+                    class="error-messages"
+                    [control]="UPDATE_FORM.get('article')"
+                  ></control-messages>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="name">Gamme</div>
+              <div class="value">
+                <div class="input-group">
+                  <select
+                    class="selectpicker form-control"
+                    formControlName="type"
+                    multiple
+                    data-max-options="1"
+                    title="Choose one of the following..."
+                  >
+                    <option *ngFor="let range of ranges" [value]="range?.name">{{ range?.name }}</option>
+                  </select>
+                  <control-messages
+                    class="error-messages"
+                    [control]="UPDATE_FORM.get('type')"
+                  ></control-messages>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="name">Prix de vente</div>
+              <div class="value">
+                <div class="input-group">
+                  <input
+                    class="input--style"
+                    type="number"
+                    name="sellingPrice"
+                    formControlName="sellingPrice"
+                  />
+                  <control-messages
+                    class="error-messages"
+                    [control]="UPDATE_FORM.get('sellingPrice')"
+                  ></control-messages>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="name">Remise</div>
+              <div class="value">
+                <div class="input-group">
+                  <select
+                    class="selectpicker form-control"
+                    multiple
+                    formControlName="discount"
+                  >
+                    <option *ngFor='let discount of discounts' [value]='discount'>{{ discount }}%</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="name">Remise spéciale</div>
+              <div class="value">
+                <div class="input-group">
+                  <select
+                    class="selectpicker form-control"
+                    formControlName="specialDiscount"
+                  >
+                    <option *ngFor='let discount of discounts' [value]='discount'>{{ discount }}%</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="name">Equivalent</div>
+              <div class="value">
+                <div class="input-group">
+                  <select
+                    class="selectpicker e form-control"
+                    name = "equivalents"
+                    data-live-search="true"
+                    multiple
+                    formControlName="equivalents"
+                  >
+                    <option
+                      *ngFor="let product of products"
+                      [value]="product?.code"
+                      >{{ product?.article }}</option
+                    >
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="name">Remarque</div>
+              <div class="value">
+                <div class="input-group">
+                  <textarea
+                    class="input--style"
+                    type="text"
+                    name="notes"
+                    formControlName="notes"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button
+                class="btn btn--radius-2 btn--red float-right"
+                type="submit"
+                [disabled]="!UPDATE_FORM.valid || loading"
+              >
+               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+  
+                Modifer
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,88 @@
+@import "../../../shared/styles/variables.scss";
+@import "../../../shared/styles/input.scss";
+@import "../../../shared/styles/forms.scss";
+@import "../../../shared/styles/buttons.scss";
+
+$red-color: $total-red-color;
+$input-bg: $input-bg-color;
+
+/* ==========================================================================
+     #Modal
+     ========================================================================== */
+
+.modal-header {
+  background-color: $red-color;
+  color: white;
+}
+
+.modal-header button {
+  color: white;
+}
+
+/* ==========================================================================
+     #FORM
+     ========================================================================== */
+
+.form-row {
+  @include form-row;
+}
+
+.form-row .name {
+  @include form-row-name;
+}
+
+.form-row .value {
+  @include form-row-value;
+}
+
+input {
+  @include input;
+}
+
+.input--style {
+  @include input--style;
+  background: $input-bg;
+}
+
+input[type="checkbox"] {
+  width: auto;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ==========================================================================
+     #BUTTON
+     ========================================================================== */
+
+.btn {
+  @include btn;
+  line-height: 38px;
+}
+
+.btn--radius {
+  @include btn--radius;
+}
+
+.btn--red {
+  @include btn--red;
+}
+
+.btn--red:hover {
+  @include btn--red--hover;
+}
+
+
+.error-messages{
+  font-weight: bold;
+  color: crimson;
+}

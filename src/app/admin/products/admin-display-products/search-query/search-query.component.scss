@@ -1,0 +1,27 @@
+ @import "../../../../shared/styles/input.scss";
+ @import "../../../../shared/styles/buttons.scss";
+
+  input {
+    @include input
+  }
+
+  .input--style {
+    @include input--style
+  }
+
+  .btn {
+      @include btn;
+      line-height: 38px;
+  }
+
+  .btn--radius {
+      @include btn--radius
+  }
+
+  .btn--red {
+      @include btn--red
+  }
+
+  .btn--red:hover {
+      @include btn--red--hover
+  }

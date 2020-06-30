@@ -1,0 +1,10 @@
+@import "../../shared/styles/buttons.scss";
+
+.btn--yellow {
+  @include btn--yellow;
+  font-weight: 500;
+}
+
+.btn--yellow:hover {
+  @include btn--yellow--hover;
+}

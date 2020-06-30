@@ -1,0 +1,15 @@
+<app-search-query [loading]="loading"></app-search-query>
+
+<ag-grid-angular
+    #agGrid
+    id="myGrid"
+    class="ag-theme-alpine grid--size"
+    [columnDefs]="columnDefs"
+    [rowData]="rowData"
+    [modules]="modules"
+    [defaultColDef]="defaultColDef"
+    [pagination]="true"
+    [paginationAutoPageSize]="true"
+    [gridOptions]="gridOptions"
+    (rowClicked)="onRowClicked($event)"
+></ag-grid-angular>

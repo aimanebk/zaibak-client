@@ -1,0 +1,90 @@
+<div
+  class="modal fade"
+  #returnProduct
+  id="returnProduct"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="returnProductLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header d-block">
+        <button
+          type="button"
+          class="close float-right"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title text-center" id="returnProductLabel">
+          Avoir
+        </h5>
+      </div>
+      <form [formGroup]="RETURN_FORM" (submit)="submit()">
+        <div class="modal-body px-5">
+          <div class="form-row">
+            <div class="name">Quantité :</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style"
+                  type="number"
+                  name="quantity"
+                  min="1"
+                  formControlName="quantity"
+                />
+                <control-messages
+                  class="error-messages"
+                  [control]="RETURN_FORM.get('quantity')"
+                ></control-messages>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">Prix :</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style"
+                  type="number"
+                  name="price"
+                  min="0"
+                  formControlName="price"
+                />
+                <control-messages
+                  class="error-messages"
+                  [control]="RETURN_FORM.get('price')"
+                ></control-messages>
+              </div>
+            </div>
+          </div>
+          <div></div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn--raduis btn-secondary"
+            data-dismiss="modal"
+          >
+            Annuler
+          </button>
+          <button
+            type="submit"
+            class="btn btn--raduis btn--red"
+            [disabled]="!RETURN_FORM.valid || loading"
+          >
+            <span
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm mr-1"
+            ></span>
+            Valider
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container-fluid h-100 py-2">
+    <div class="form-row px-5">
+        <div class="form-group col-md-6">
+            <div class="form-row">
+                <div class="name">Recherche</div>
+                <div class="value">
+                  <div class="input-group">
+                    <input
+                    type="text"
+                    id="inputCode"
+                    class="form-control input--style"
+                    placeholder="Recherche rapide ..."
+                    [(ngModel)]="quickSearchValue"
+                    (keyup)="onQuickFilterChanged()" 
+                  />
+                  </div>
+                </div>
+              </div> 
+        </div>
+    </div>
+    <ag-grid-angular
+    #agGrid
+    id="myGrid"
+    class="ag-theme-alpine grid--size"
+    [columnDefs]="columnDefs"
+    [rowData]="rowData"
+    [modules]="modules"
+    [defaultColDef]="defaultColDef"
+    [pagination]="true"
+    [paginationAutoPageSize]="true"
+    [gridOptions]="gridOptions"
+    (rowClicked)="onRowClicked($event)"
+></ag-grid-angular>
+</div>

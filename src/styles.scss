@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@ag-grid-community/core/dist/styles/ag-grid.css";
+@import "~@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+
+@import "./app/shared/styles/variables.scss";
+
+$bg-yellow : $total-yellow-color;
+$bg-skyblue : $total-skyblue-color;
+$text-color : $text-primary-color;
+$warning-color : $warning-color;
+$sell-color : $sell-color;
+
+
+/* ==========================================================================
+  #BACKGROUND
+  ========================================================================== */
+
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: -webkit-gradient(linear, left bottom, right top, from($bg-yellow), to($bg-skyblue)) fixed;
+    background: -webkit-linear-gradient(bottom left, $bg-yellow 0%, $bg-skyblue 100%) fixed;
+    background: -moz-linear-gradient(bottom left, $bg-yellow 0%, $bg-skyblue 100%) fixed;
+    background: -o-linear-gradient(bottom left, $bg-yellow 0%, $bg-skyblue 100%) fixed;
+    background: linear-gradient(to top right, $bg-yellow 0%, $bg-skyblue 100%) fixed;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+  }
+
+  .return--style {
+    background: $warning-color !important;
+  }
+
+  .sell--style {
+      background: $sell-color !important;
+  }

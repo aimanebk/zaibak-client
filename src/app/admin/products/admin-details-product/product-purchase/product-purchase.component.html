@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="card card-5">
+    <div class="card-heading">
+      <h2 class="title">Variation du stock</h2>
+    </div>
+    <div class="card-body">
+      <ag-grid-angular
+        #agGrid
+        id="myGrid"
+        class="ag-theme-alpine"
+        [columnDefs]="columnDefs"
+        [gridOptions]="gridOptions"
+        [rowData]="purchases"
+        [modules]="modules"
+        [defaultColDef]="defaultColDef"
+        [pagination]="true"
+        [paginationPageSize]="5"
+      >
+      </ag-grid-angular>
+    </div>
+  </div>
+</div>

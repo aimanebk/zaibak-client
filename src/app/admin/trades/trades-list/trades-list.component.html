@@ -1,0 +1,15 @@
+<div class="container-fluid h-100 py-4">
+    <ag-grid-angular
+    #agGrid
+    id="myGrid"
+    class="ag-theme-alpine grid--size"
+    [columnDefs]="columnDefs"
+    [rowData]="rowData"
+    [modules]="modules"
+    [defaultColDef]="defaultColDef"
+    [pagination]="true"
+    [paginationAutoPageSize]="true"
+    [gridOptions]="gridOptions"
+></ag-grid-angular>
+</div>
+

@@ -1,0 +1,79 @@
+<nav
+  *ngIf="isAdmin || isStoreKeeper"
+  class="navbar navbar-expand-md navbar-dark bg-blue"
+>
+  <a class="navbar-brand" [routerLink]="['/']">
+    <fa-icon [icon]="faHome"></fa-icon>
+  </a>
+  <button
+    class="navbar-toggler collapsed"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarsExample04"
+    aria-controls="navbarsExample04"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbarsExample04">
+    <ul class="navbar-nav mr-auto">
+      <li
+        *ngIf="isAdmin"
+        class="nav-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link" [routerLink]="['admin/product']">Accueil</a>
+      </li>
+      <li
+        *ngIf="isStoreKeeper"
+        class="nav-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link" [routerLink]="['storekeeper/product']">Accueil</a>
+      </li>
+      <li *ngIf="isAdmin" class="nav-item dropdown" routerLinkActive="active">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdownMenuLink"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Ajouter
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['admin/product/add']"
+            >Produit</a
+          >
+          <a class="dropdown-item" [routerLink]="['admin/category/add']"
+            >Gamme</a
+          >
+          <a class="dropdown-item" [routerLink]="['admin/supplier/add']"
+            >Fournisseur</a
+          >
+        </div>
+      </li>
+      <li *ngIf="isAdmin" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['admin/report']">Rapports</a>
+      </li>
+      <li *ngIf="isAdmin" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['admin/invoice']">Facturation</a>
+      </li>
+      <li *ngIf="isAdmin" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['admin/logs']">Logs</a>
+      </li>
+    </ul>
+    <div class="navbar-nav my-2 my-md-0">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" (click)="logOut()"
+          ><fa-icon [icon]="faSignOutAlt"></fa-icon> déconnecter</a
+        >
+      </li>
+    </div>
+  </div>
+</nav>

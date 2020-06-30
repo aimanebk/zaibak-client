@@ -1,0 +1,30 @@
+@import "../../shared/styles/input.scss";
+@import "../../shared/styles/forms.scss";
+
+.form-row {
+  @include form-row;
+  padding: 0;
+  margin: 0;
+}
+
+.form-row .name {
+  @include form-row-name;
+}
+
+.form-row .value {
+  @include form-row-value;
+}
+
+input {
+  @include input;
+}
+
+.input--style {
+  @include input--style;
+}
+
+
+.grid--size {
+    width: 100%;
+    height: 80%;
+}

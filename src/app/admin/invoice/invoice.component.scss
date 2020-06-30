@@ -1,0 +1,84 @@
+@import "../../shared/styles/buttons.scss";
+
+.bg-white {
+    background: white;
+}
+
+footer {
+    display: none;
+}
+
+input {
+    border: none;
+    font-weight: bold;
+}
+
+input.center-text {
+    text-align: center;
+}
+
+input:active {
+    border: none;
+}
+
+.datePicker--style{
+    width: 100px;
+}
+.btn-circle.btn-sm { 
+    width: 30px; 
+    height: 30px; 
+    padding: 6px 0px; 
+    border-radius: 15px; 
+    font-size: 12px; 
+    text-align: center; 
+} 
+
+table.table-bordered > tbody > tr > td {
+    border: 1px solid black;
+}
+table.table-bordered > thead > tr > th {
+    border: 1px solid black;
+}
+
+.w-7 {
+    width: 7% !important;
+}
+.w-10 {
+    width: 10% !important;
+}
+.w-13 {
+    width: 13% !important;
+}
+.w-20 {
+    width: 20% !important;
+}
+.w-55 {
+    width: 55% !important;
+}
+
+.container {
+    min-width: 1200px;
+}
+
+@media print {
+    footer {
+        display: inline;
+    }  
+
+    button {
+        display: none !important;
+    }    
+}
+
+.btn--style--2 {
+    @include btn;
+    line-height: 38px;
+}
+
+.btn--radius {
+    @include btn--radius
+}
+
+.btn--red {
+    @include btn--red
+}

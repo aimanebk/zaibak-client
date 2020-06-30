@@ -1,0 +1,42 @@
+@import "../shared/styles/auth.scss";
+
+  .user_card {
+    @include user_card
+  }
+
+
+  .brand_logo_container {
+    @include brand_logo_container
+  }
+
+  .brand_logo {
+    @include brand_logo
+  }
+
+  .form_container {
+    @include form_container
+  }
+
+  .login_btn {
+    @include login_btn
+  }
+
+  .login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+  }
+
+  .login_container {
+    @include login_container
+  }
+
+  .input-group-text {
+    @include input-group-text
+  }
+
+  .input_user,
+  .input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+  }
+  

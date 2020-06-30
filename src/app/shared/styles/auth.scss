@@ -1,0 +1,65 @@
+@import "../shared/styles/variables.scss";
+
+$bg-darkyellow : #f39c12;
+$bg-red : $total-red-color;
+$white-color : #fff;
+
+@mixin user_card {
+    height: 400px;
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: $bg-darkyellow;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+  }
+
+
+@mixin brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    background: #70aeb2;
+    padding: 10px;
+    text-align: center;
+  }
+
+@mixin brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid $total-red-color;
+  }
+
+@mixin form_container {
+    margin-top: 100px;
+  }
+
+@mixin login_btn {
+    width: 100%;
+    background: $bg-red !important;
+    color: $white-color !important;
+  }
+
+@mixin login_container {
+    padding: 0 2rem;
+  }
+
+@mixin input-group-text {
+    background: $bg-red !important;
+    color: $white-color !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+  }
+  

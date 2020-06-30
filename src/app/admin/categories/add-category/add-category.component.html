@@ -1,0 +1,41 @@
+<div class="container-fluid h-100 py-5">
+    <div class="wrapper wrapper--w790">
+      <div class="card card-5">
+        <div class="card-heading">
+          <h2 class="title">Ajouter une gamme</h2>
+        </div>
+        <div class="card-body p-5">
+          <form [formGroup]="CATEGORY_FORM" (submit)="submit()">
+            <div class="form-row">
+              <div class="name">Gamme</div>
+              <div class="value">
+                <div class="input-group">
+                  <input
+                    class="input--style"
+                    type="text"
+                    name="name"
+                    formControlName="name"
+                  />
+                  <control-messages
+                    class="error-messages"
+                    [control]="CATEGORY_FORM.get('name')"
+                  ></control-messages>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button
+                class="btn btn--radius-2 btn--red float-right"
+                type="submit"
+                [disabled]="!CATEGORY_FORM.valid || loading"
+              >
+               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+  
+                Ajouter
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,83 @@
+@import "../../../shared/styles/cards.scss";
+@import "../../../shared/styles/buttons.scss";
+@import "../../../shared/styles/input.scss";
+
+
+/* ==========================================================================
+     #FORM
+     ========================================================================== */
+
+input {
+  @include input
+}
+
+.input--style {
+  @include input--style
+}
+
+
+/* ==========================================================================
+     #TITLE
+     ========================================================================== */
+.title {
+  @include title;
+}
+
+/* ==========================================================================
+     #CARD
+     ========================================================================== */
+.card {
+  @include card;
+}
+
+.card-5 {
+  @include card-5;
+  padding: 0;
+}
+
+.card-5 .card-heading {
+  @include card-heading;
+}
+
+.info--style {
+  @include info--style;
+}
+
+.info--title--style {
+  @include info--title--style;
+}
+
+/* ==========================================================================
+     #BUTTONS
+     ========================================================================== */
+.btn--style--2 {
+    @include btn;
+    line-height: 34px;
+}
+
+.btn--radius {
+    @include btn--radius
+}
+
+.btn--red {
+    @include btn--red
+}
+
+.btn--red:hover {
+    @include btn--red--hover
+}
+
+.btn--yellow {
+  @include btn--yellow;
+  font-weight: 500;
+}
+
+.btn--yellow:hover {
+  @include btn--yellow--hover;
+}
+
+@media(max-width: 1100px){
+  .btn--yellow {
+    min-height: 100px;
+  }
+}
