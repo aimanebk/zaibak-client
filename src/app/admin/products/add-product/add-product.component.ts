@@ -45,9 +45,7 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() :void {
-    setTimeout(() => {
-      $('.selectpicker').selectpicker();      
-    },100);
+    $('.selectpicker').selectpicker();      
   }
 
   getProducts(){
@@ -55,6 +53,7 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
       .pipe(takeWhile(() => this.alive))
       .subscribe((products : Product[]) => {
         this.products = products;
+        this.refreshSelect();
       }, error => {
         console.log(error);
       })
@@ -65,6 +64,7 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
       .pipe(takeWhile(() => this.alive))
       .subscribe((ranges : Range[]) => {
         this.ranges = ranges;
+        this.refreshSelect();
       }, error => {
         console.log(error);
       })
@@ -86,8 +86,10 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(){
-    this.alive = false
+  refreshSelect(){
+    setTimeout(() => {
+      $('.selectpicker').selectpicker('refresh');
+    },150);
   }
 
   showError(errorMessage){
@@ -96,6 +98,10 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
 
   showSuccess(message){
     this.toastr.success(message, "Success")
+  }
+
+  ngOnDestroy(){
+    this.alive = false
   }
 
 }

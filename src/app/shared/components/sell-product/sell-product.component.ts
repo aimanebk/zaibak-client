@@ -101,15 +101,15 @@ export class SellProductComponent implements OnInit, OnChanges {
     },100);
   }
 
-  ngOnDestroy(){
-    this.alive = false
-  }
-
   showError(errorMessage){
     this.toastr.error(errorMessage, "Erreur");
   }
 
   showSuccess(message){
     this.toastr.success(message, "Success")
+  }
+
+  ngOnDestroy(){
+    this.alive = false
   }
 }

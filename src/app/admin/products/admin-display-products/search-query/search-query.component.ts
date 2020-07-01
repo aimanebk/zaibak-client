@@ -47,9 +47,7 @@ export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() :void {
-    setTimeout(() => {
-      $('.selectpicker').selectpicker();
-    },500);
+    $('.selectpicker').selectpicker();
   }
 
   getRanges(){
@@ -57,6 +55,7 @@ export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(takeWhile(() => this.alive))
       .subscribe((ranges : Range[]) => {
         this.ranges = ranges;
+        this.refreshSelect();
       }, error => {
         console.log(error);
       })
@@ -86,6 +85,12 @@ export class SearchQueryComponent implements OnInit, AfterViewInit, OnDestroy {
     delete query.date;
 
     return query
+  }
+
+  refreshSelect(){
+    setTimeout(() => {
+      $('.selectpicker').selectpicker('refresh');
+    },150);
   }
 
   showError(errorMessage){
