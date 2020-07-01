@@ -34,9 +34,7 @@ export class AdminPurchaseProductComponent implements OnInit, OnChanges, OnDestr
   }
 
   ngOnChanges(){
-    setTimeout(() => {
-      $('.selectpicker').selectpicker('refresh');
-    },100);
+    $('.selectpicker').selectpicker('refresh');
   }
 
   getSuppliers(){
@@ -44,8 +42,9 @@ export class AdminPurchaseProductComponent implements OnInit, OnChanges, OnDestr
         .pipe(takeWhile(() => this.alive))
         .subscribe((result : Supplier[]) => {
             this.suppliers = result;
+            this.refreshSelect();
         },error => {
-
+          console.log(error);
         });
   }
 
@@ -68,8 +67,10 @@ export class AdminPurchaseProductComponent implements OnInit, OnChanges, OnDestr
     }
   }
 
-  ngOnDestroy(){
-    this.alive = false
+  refreshSelect(){
+    setTimeout(() => {
+      $('.selectpicker').selectpicker('refresh');
+    },150);
   }
 
   showError(errorMessage){
@@ -78,6 +79,10 @@ export class AdminPurchaseProductComponent implements OnInit, OnChanges, OnDestr
 
   showSuccess(message){
     this.toastr.success(message, "Success")
+  }
+
+  ngOnDestroy(){
+    this.alive = false
   }
 
 }
