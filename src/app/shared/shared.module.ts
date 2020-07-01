@@ -9,13 +9,15 @@ import { ControlMessagesComponent } from './control-messages/control-messages.co
 import { RegisterRoutingModule } from '../register/register-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { LoadingComponent } from './loading/loading.component';
 
 
 
 @NgModule({
   declarations: [
     ControlMessagesComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { RouterModule } from '@angular/router';
   ],
   exports : [
     ControlMessagesComponent,
+    LoadingComponent,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
