@@ -14,18 +14,20 @@ import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/route
 export class AppComponent {
   user: User;
   showNavbar : boolean = false;
+  showloading : boolean = true;
 
   constructor(private authenticationService: AuthenticationService, private router : Router) {
       this.authenticationService.currentUser.subscribe(x => this.user = x);
       this.authenticationService.initRoles().pipe(take(1)).subscribe(x => {});
       router.events.subscribe(e => {
         if (e instanceof RouteConfigLoadStart) {
-            // show Navbar
+            //Lazy loading starts
             this.showNavbar = false;
+            this.showloading = true;
         } else if (e instanceof RouteConfigLoadEnd ) {
-            // hide navbar
+            // Lazy loading ends
             this.showNavbar = true;
-
+            this.showloading = false;
         }
     });
     
