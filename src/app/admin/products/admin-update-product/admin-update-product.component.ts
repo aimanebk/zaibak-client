@@ -68,9 +68,7 @@ export class AdminUpdateProductComponent implements OnInit {
   }
 
   ngAfterViewInit() :void {
-    setTimeout(() => {
-      $('.selectpicker').selectpicker('refresh');
-    },100);
+    $('.selectpicker').selectpicker();
   }
 
   getProducts(){
@@ -78,6 +76,7 @@ export class AdminUpdateProductComponent implements OnInit {
       .pipe(takeWhile(() => this.alive))
       .subscribe((products : Product[]) => {
         this.products = products;
+        this.refreshSelect();
       }, error => {
         console.log(error);
       })
@@ -88,6 +87,7 @@ export class AdminUpdateProductComponent implements OnInit {
       .pipe(takeWhile(() => this.alive))
       .subscribe((ranges : Range[]) => {
         this.ranges = ranges;
+        this.refreshSelect();
       }, error => {
         console.log(error);
       })
@@ -135,8 +135,10 @@ export class AdminUpdateProductComponent implements OnInit {
     }
   }
 
-  ngOnDestroy(){
-    this.alive = false
+  refreshSelect(){
+    setTimeout(() => {
+      $('.selectpicker').selectpicker('refresh');
+    },150);
   }
 
   showError(errorMessage){
@@ -145,6 +147,10 @@ export class AdminUpdateProductComponent implements OnInit {
 
   showSuccess(message){
     this.toastr.success(message, "Success")
+  }
+
+  ngOnDestroy(){
+    this.alive = false
   }
 
 
