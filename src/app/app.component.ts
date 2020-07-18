@@ -18,7 +18,7 @@ export class AppComponent {
 
   constructor(private authenticationService: AuthenticationService, private router : Router) {
       this.authenticationService.currentUser.subscribe(x => this.user = x);
-      this.authenticationService.initRoles().pipe(take(1)).subscribe(x => {});
+      this.authenticationService.initUser().pipe(take(1)).subscribe();
       router.events.subscribe(e => {
         if (e instanceof RouteConfigLoadStart) {
             //Lazy loading starts

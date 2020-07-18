@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         .subscribe((user : any ) => {
           this.loading = false;
           this.disabled = false;
+          console.log(user)
           if(user && user.role == Role.Admin)
           this.router.navigate(['/admin/product']);
   
