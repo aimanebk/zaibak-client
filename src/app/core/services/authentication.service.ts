@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
-import { BehaviorSubject, Observable, observable, from } from 'rxjs';
+import { BehaviorSubject, Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Role } from '../models/role';
-import { error } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class AuthenticationService {
   private  user : User;
 
   constructor(private http: HttpClient, private router : Router) {
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    // this.user = JSON.parse(localStorage.getItem('currentUser'));
 
     this.currentUserSubject = new BehaviorSubject<User>(this.user);
     this.currentUser = this.currentUserSubject.asObservable();
@@ -32,9 +31,9 @@ export class AuthenticationService {
     .pipe(map((user : User) => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
       this.currentUserSubject.next(user);
-      let usr = {...user};
-      delete usr.role; 
-      localStorage.setItem('currentUser', JSON.stringify(usr));
+      // let usr = {...user};
+      // delete usr.role; 
+      // localStorage.setItem('currentUser', JSON.stringify(usr));
       return user;
     }));
   }
@@ -46,22 +45,22 @@ export class AuthenticationService {
     this.router.navigate(['/login']);
   }
 
-  initRoles(){
-    if(!this.user)
-      return from([]);
+  initUser(){
+    // if(!this.user)
+    //   return from([]);
 
-    return this.http.get('user/role')
-      .pipe(map((user : { role : string }) => {
+    return this.http.get('user/info')
+      .pipe(map((user : User) => {
         if(!user){
           this.logout();
           return from([]);
         }
         
-        if(user.role == 'Admin')
-          this.user.role = Role.Admin;
-        else
-          this.user.role = Role.User;
-
+        // if(user.role == 'Admin')
+        //   this.user.role = Role.Admin;
+        // else
+        //   this.user.role = Role.User;
+        console.log(user);
         this.currentUserSubject.next(this.user);
       }));
   }
