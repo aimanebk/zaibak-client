@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
 import { SharedModule } from './shared/shared.module';
 import { AllowCredentialsInterceptor } from './core/interceptors/allowCredentials.interceptor';
+import { HttpXSRFInterceptor } from './core/interceptors/csrf.interceptor';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { AllowCredentialsInterceptor } from './core/interceptors/allowCredential
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AllowCredentialsInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpXSRFInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
