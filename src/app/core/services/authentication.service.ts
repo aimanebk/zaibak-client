@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { BehaviorSubject, Observable, from } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Role } from '../models/role';
 
@@ -18,7 +18,7 @@ export class AuthenticationService {
     // this.user = JSON.parse(localStorage.getItem('currentUser'));
 
     this.currentUserSubject = new BehaviorSubject<User>(this.user);
-    this.currentUser = this.currentUserSubject.asObservable();
+    this.currentUser = this.currentUserSubject.asObservable().pipe(filter(user => !!user));
   }
 
   public get currentUserValue(): User {
@@ -60,8 +60,7 @@ export class AuthenticationService {
         //   this.user.role = Role.Admin;
         // else
         //   this.user.role = Role.User;
-        console.log(user);
-        this.currentUserSubject.next(this.user);
+        this.currentUserSubject.next(user);
       }));
   }
 }
