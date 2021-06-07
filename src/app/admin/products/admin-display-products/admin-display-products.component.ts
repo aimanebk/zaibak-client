@@ -26,6 +26,7 @@ export class AdminDisplayProductsComponent implements OnInit{
   columnDefs = [
 		{headerName: 'CODE', field: 'code' },
 		{headerName: 'ARTICLE', field: 'article'},
+		{headerName: 'MARQUE', field: 'brand'},
 		{headerName: 'GAMME', field: 'type'},
 		{headerName: `PRIX D'ACHAT`,  valueGetter: function(params) {
       return parseFloat(params.data.buyingPrice).toFixed(2);
