@@ -2,9 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { BehaviorSubject, Observable, from } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { map, filter, shareReplay, tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Role } from '../models/role';
+
+export const ANONYMOUS_USER: User = {
+  _id: undefined,
+  username: undefined,
+  role: undefined
+}
 
 @Injectable({
   providedIn: 'root'
@@ -39,10 +44,12 @@ export class AuthenticationService {
   }
 
   logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-    this.router.navigate(['/login']);
+    return this.http.post('logout', null).pipe(
+      shareReplay(),
+      tap(user => {
+        this.currentUserSubject.next(ANONYMOUS_USER);
+        this.router.navigate(['/login']);
+      }));
   }
 
   initUser(){
@@ -51,16 +58,13 @@ export class AuthenticationService {
 
     return this.http.get('user/info')
       .pipe(map((user : User) => {
+        console.log(user)
         if(!user){
-          this.logout();
+          this.router.navigate(['/login']);
           return from([]);
+        }else{
+          this.currentUserSubject.next(user);
         }
-        
-        // if(user.role == 'Admin')
-        //   this.user.role = Role.Admin;
-        // else
-        //   this.user.role = Role.User;
-        this.currentUserSubject.next(user);
       }));
   }
 }

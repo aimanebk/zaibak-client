@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           this.disabled = false;
           console.log(user)
           if(user && user.role == Role.Admin)
-          this.router.navigate(['/admin/product']);
+            this.router.navigate(['/admin/product']);
   
           if(user && user.role == Role.User)
             this.router.navigate(['/storekeeper/product']);

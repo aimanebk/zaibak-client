@@ -31,7 +31,7 @@ import { HttpXSRFInterceptor } from './core/interceptors/csrf.interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AllowCredentialsInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpXSRFInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

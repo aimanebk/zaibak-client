@@ -18,7 +18,7 @@ export class NavbarComponent {
   constructor(private authenticationService: AuthenticationService) {}
 
   logOut() {
-      this.authenticationService.logout();
+      this.authenticationService.logout().subscribe();
   }
 
 }
