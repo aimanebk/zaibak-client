@@ -48,4 +48,8 @@ export class ProductService {
   purchaseProduct(id, purchaseDetails){
     return this.http.post('purchase/'+id, purchaseDetails);
   }
+
+  deleteProduct(id){
+    return this.http.delete('product/'+id);
+  }
 }

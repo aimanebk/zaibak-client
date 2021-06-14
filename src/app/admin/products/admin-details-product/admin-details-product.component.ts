@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/core/services/product.service';
 import { takeWhile } from 'rxjs/operators';
 import { Product } from 'src/app/core/models/product';
-import { faShoppingCart, faCartPlus, faExchangeAlt, faPencilAlt  } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faCartPlus, faExchangeAlt, faPencilAlt, faTrash  } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder } from '@angular/forms';
 import { formatDate } from '@angular/common';
 
@@ -30,6 +30,7 @@ export class AdminDetailsProductComponent implements OnInit, OnDestroy {
   faCartPlus = faCartPlus;
   faExchangeAlt = faExchangeAlt;
   faPencilAlt = faPencilAlt;
+  faTrash = faTrash;
 
   constructor(private activatedRoute : ActivatedRoute, private productService : ProductService,
               private formBuilder : FormBuilder, private router : Router)  {
