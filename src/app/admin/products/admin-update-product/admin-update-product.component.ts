@@ -20,6 +20,7 @@ export class AdminUpdateProductComponent implements OnInit {
   state$: Observable<object>;
 
   UPDATE_FORM = this.formBuilder.group({
+    code: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     article: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     brand: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
     type: ['', [Validators.required, Validators.maxLength(50)]],
@@ -110,14 +111,15 @@ export class AdminUpdateProductComponent implements OnInit {
   }
 
   fillUpdateForm(product : Product){
-    this.UPDATE_FORM.get('article').setValue(product.article);
-    this.UPDATE_FORM.get('brand').setValue(product.brand);
-    this.UPDATE_FORM.get('type').setValue([product.type]);
-    this.UPDATE_FORM.get('sellingPrice').setValue(product.sellingPrice);
-    this.UPDATE_FORM.get('discount').setValue(product.discount);
-    this.UPDATE_FORM.get('specialDiscount').setValue(product.specialDiscount);
-    this.UPDATE_FORM.get('equivalents').setValue(product.equivalents);
-    this.UPDATE_FORM.get('notes').setValue(product.notes); 
+    this.UPDATE_FORM.get('code').setValue(product?.code);
+    this.UPDATE_FORM.get('article').setValue(product?.article);
+    this.UPDATE_FORM.get('brand').setValue(product?.brand);
+    this.UPDATE_FORM.get('type').setValue([product?.type]);
+    this.UPDATE_FORM.get('sellingPrice').setValue(product?.sellingPrice);
+    this.UPDATE_FORM.get('discount').setValue(product?.discount);
+    this.UPDATE_FORM.get('specialDiscount').setValue(product?.specialDiscount);
+    this.UPDATE_FORM.get('equivalents').setValue(product?.equivalents);
+    this.UPDATE_FORM.get('notes').setValue(product?.notes); 
   }
 
   submit(){
