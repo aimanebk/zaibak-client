@@ -11,6 +11,7 @@ export class Product {
     discount: [number];
     specialDiscount : number;
     equivalents: [string];
+    oeNumber : string;
     notes: string;
     purchaseVariation? : [Purchase];
     stock : number;
