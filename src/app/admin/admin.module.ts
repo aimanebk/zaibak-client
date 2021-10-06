@@ -19,6 +19,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../shared/components/components.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AgGridModule } from '@ag-grid-community/angular';
+import { DeleteProductComponent } from './products/delete-product/delete-product.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AgGridModule } from '@ag-grid-community/angular';
     SearchQueryComponent,
     TradesListComponent,
     InvoiceComponent,
+    DeleteProductComponent,
   ],
   imports: [
     CommonModule,

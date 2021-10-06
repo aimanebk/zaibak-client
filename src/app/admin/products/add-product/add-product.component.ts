@@ -20,10 +20,11 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
   PRODUCT_FORM = this.formBuilder.group({
     code: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     article: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+    brand: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
     type: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     sellingPrice: ['', [Validators.required]],
     discount: [[]],
-    specialDiscount: [],
+    specialDiscount: [0],
     equivalents: [[]],
     notes: [''],
   });

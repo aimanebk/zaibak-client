@@ -7,6 +7,23 @@
         <div class="card-body p-5">
           <form [formGroup]="UPDATE_FORM" (submit)="submit()">
             <div class="form-row">
+              <div class="name">Code</div>
+              <div class="value">
+                <div class="input-group">
+                  <input
+                    class="input--style"
+                    type="text"
+                    name="code"
+                    formControlName="code"
+                  />
+                  <control-messages
+                    class="error-messages"
+                    [control]="UPDATE_FORM.get('code')"
+                  ></control-messages>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
               <div class="name">Article</div>
               <div class="value">
                 <div class="input-group">
@@ -19,6 +36,23 @@
                   <control-messages
                     class="error-messages"
                     [control]="UPDATE_FORM.get('article')"
+                  ></control-messages>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="name">Marque</div>
+              <div class="value">
+                <div class="input-group">
+                  <input
+                    class="input--style"
+                    type="text"
+                    name="brand"
+                    formControlName="brand"
+                  />
+                  <control-messages
+                    class="error-messages"
+                    [control]="UPDATE_FORM.get('brand')"
                   ></control-messages>
                 </div>
               </div>

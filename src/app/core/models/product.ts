@@ -4,6 +4,7 @@ export class Product {
     _id? : string;
     code: string;
     article: string;
+    brand: string;
     type: string;
     buyingPrice?: number;
     sellingPrice?: number;

@@ -20,6 +20,7 @@ export class StorekeeperDisplayProductsComponent implements OnInit, OnDestroy {
   columnDefs = [
 		{headerName: 'Code', field: 'code' },
 		{headerName: 'Article', field: 'article'},
+    {headerName: 'Marque', field: 'brand'},
     {headerName: 'Gamme', field: 'type'},
     {headerName: 'Stock',  valueGetter: function(params) {
       if(!params.data.stock)
