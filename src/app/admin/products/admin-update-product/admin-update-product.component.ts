@@ -28,6 +28,7 @@ export class AdminUpdateProductComponent implements OnInit {
     discount: [[]],
     specialDiscount: [0],
     equivalents: [],
+    oeNumber: [''],
     notes: [''],
   });
 
@@ -119,6 +120,7 @@ export class AdminUpdateProductComponent implements OnInit {
     this.UPDATE_FORM.get('discount').setValue(product?.discount);
     this.UPDATE_FORM.get('specialDiscount').setValue(product?.specialDiscount);
     this.UPDATE_FORM.get('equivalents').setValue(product?.equivalents);
+    this.UPDATE_FORM.get('oeNumber').setValue(product?.oeNumber);
     this.UPDATE_FORM.get('notes').setValue(product?.notes); 
   }
 

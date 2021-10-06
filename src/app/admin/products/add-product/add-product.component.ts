@@ -26,6 +26,7 @@ export class AddProductComponent implements OnInit,AfterViewInit, OnDestroy {
     discount: [[]],
     specialDiscount: [0],
     equivalents: [[]],
+    oeNumber: [''],
     notes: [''],
   });
   
