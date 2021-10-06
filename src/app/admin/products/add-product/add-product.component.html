@@ -140,6 +140,23 @@
             </div>
           </div>
           <div class="form-row">
+            <div class="name">Numéro OE</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style"
+                  type="text"
+                  name="oeNumber"
+                  formControlName="oeNumber"
+                />
+                <control-messages
+                  class="error-messages"
+                  [control]="PRODUCT_FORM.get('oeNumber')"
+                ></control-messages>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
             <div class="name">Remarque</div>
             <div class="value">
               <div class="input-group">
