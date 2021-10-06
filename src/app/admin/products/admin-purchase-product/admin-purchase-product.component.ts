@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SupplierService } from 'src/app/core/services/supplier.service';
-import { takeWhile } from 'rxjs/operators';
+import { debounceTime, startWith, takeWhile, tap } from 'rxjs/operators';
 import { Supplier } from 'src/app/core/models/supplier';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from 'src/app/core/services/product.service';
+import { combineLatest } from 'rxjs';
 declare var $: any;
 
 @Component({
@@ -14,9 +15,10 @@ declare var $: any;
 })
 export class AdminPurchaseProductComponent implements OnInit, OnChanges, OnDestroy {
   @Input() productID : string;
+  unitPrice : number | string = 0;
 
   PURCHASE_FORM = this.formBuilder.group({
-    quantite: ['', [Validators.required,Validators.min(1)]],
+    quantite: ['1', [Validators.required,Validators.min(1)]],
     supplier: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     refInvoice: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
     price: ['', [Validators.required, Validators.min(0)]],
@@ -31,6 +33,16 @@ export class AdminPurchaseProductComponent implements OnInit, OnChanges, OnDestr
 
   ngOnInit(): void {
     this.getSuppliers();
+    combineLatest([this.PURCHASE_FORM.get('quantite').valueChanges.pipe(startWith(1)), 
+                  this.PURCHASE_FORM.get('price').valueChanges])
+            .pipe(
+              takeWhile(() => this.alive),
+              debounceTime(500),
+              tap(value => {
+               this.unitPrice = value && value[0] ? (value[1]/value[0]).toFixed(2) : 0
+              })
+            )
+            .subscribe();
   }
 
   ngOnChanges(){
