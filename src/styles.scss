@@ -37,3 +37,12 @@ $sell-color : $sell-color;
   .sell--style {
       background: $sell-color !important;
   }
+
+  /* ==========================================================================
+  #AG-GRID
+  ========================================================================== */
+
+.ag-row .ag-cell {
+  display: flex;
+  align-items: center;
+}

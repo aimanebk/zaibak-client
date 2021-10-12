@@ -59,7 +59,8 @@ export class AdminDisplayProductsComponent implements OnInit{
   };
 
   gridOptions : GridOptions = {
-    rowStyle : { 'font-weight': 'normal' }
+    rowStyle : { 'font-weight': 'normal', 'font-size' : '12px' },
+    
 };
 
   queryParams ;
