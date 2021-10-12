@@ -18,7 +18,7 @@ export class AdminPurchaseProductComponent implements OnInit, OnChanges, OnDestr
   unitPrice : number | string = 0;
 
   PURCHASE_FORM = this.formBuilder.group({
-    quantite: ['1', [Validators.required,Validators.min(1)]],
+    quantite: [1, [Validators.required,Validators.min(1)]],
     supplier: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     refInvoice: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
     price: ['', [Validators.required, Validators.min(0)]],
