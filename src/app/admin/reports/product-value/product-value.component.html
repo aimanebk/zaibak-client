@@ -11,6 +11,10 @@
     [defaultColDef]="defaultColDef"
     [pagination]="true"
     [paginationAutoPageSize]="true"
+    [getRowStyle]="getRowStyle"    
+    [pinnedTopRowData]="pinnedTopRowData"
+    [frameworkComponents]="frameworkComponents"
     [gridOptions]="gridOptions"
     (rowClicked)="onRowClicked($event)"
+    (gridReady)="onGridReady($event)"
 ></ag-grid-angular>

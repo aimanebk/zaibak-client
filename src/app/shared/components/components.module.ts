@@ -4,6 +4,7 @@ import { ProductInfosComponent } from './product-infos/product-infos.component';
 import { SellProductComponent } from './sell-product/sell-product.component';
 import { FormsModule } from '@angular/forms';
 import { OnlyPositivePipe } from '../pipes/only-positive.pipe';
+import { CustomPinnedRowRenderer } from './custom-pinned-row-renderer/custom-pinned-row-renderer.component';
 
 
 
@@ -11,7 +12,8 @@ import { OnlyPositivePipe } from '../pipes/only-positive.pipe';
   declarations: [
     ProductInfosComponent,
     SellProductComponent,
-    OnlyPositivePipe
+    OnlyPositivePipe,
+    CustomPinnedRowRenderer
   ],
   imports: [
     CommonModule,
